@@ -1,0 +1,116 @@
+commit 54189517bb7a1512069db4fb2becd20acfbf2575
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 14:19:23 2018 +0200
+
+    asioita tapahtuu
+
+ tiedostoja/file1  | 0
+ tiedostoja/file2  | 0
+ tiedostoja/file22 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 9eb9257405760301f43ff039186adcb91d7f842f
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 14:14:52 2018 +0200
+
+    kansion lisäys
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 7f084a2419b9ecec0fb48b5daa5d4542da68c36b
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 14:04:11 2018 +0200
+
+    varmistuksia
+
+ eka.txt    | 3 ++-
+ kolmas.txt | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+commit 4c23bcafbacc2b192f71c63a53424eac799534fd
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:59:53 2018 +0200
+
+    ihmeitä tapahtuu
+
+ eka.txt      | 10 ++++++++++
+ tiedosto.txt | 10 ----------
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+commit 7c3d23a7f8233794f316eaa25d692a642b8ef77d
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:57:42 2018 +0200
+
+    poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 18641dc2d45e0664406166bec6b174c14cfb23f1
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:54:24 2018 +0200
+
+    poisto ja lisäys
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1fbf285c5024b4bd5ac9213edf37d1370367a675
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:52:48 2018 +0200
+
+    lisää tekstiä
+
+ tiedosto.txt | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+commit c05dabcd7cee5bdc98c32548112fa2a708ff7aae
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:45:33 2018 +0200
+
+    uusi kansio
+
+ "stuff/nelj\303\244s.txt" | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit c91de7989a4f614073b3a7e7fec7ab0d011d72d7
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:43:07 2018 +0200
+
+    lisäilyä
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 531bdafddc0f29bff3c913738e84e0b929702caa
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:41:49 2018 +0200
+
+    kolmas luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 811274ffecde127f90af4a318aca28247624f289
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:38:34 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 35c11751a97fa9681423af72414b25860f5cf2cf
+Author: SIholin <iholin.sanna@gmail.com>
+Date:   Mon Mar 19 13:34:20 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
