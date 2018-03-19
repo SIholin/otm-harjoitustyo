@@ -13,7 +13,7 @@ commit 9eb9257405760301f43ff039186adcb91d7f842f
 Author: SIholin <iholin.sanna@gmail.com>
 Date:   Mon Mar 19 14:14:52 2018 +0200
 
-    kansion lisäys
+    kansion
 
  tiedostoja/file1 | 0
  tiedostoja/file2 | 0
