@@ -11,11 +11,11 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli __normaali k
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu kolmesta eri näkymästä
+Sovellus koostuu viidestä eri näkymästä
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/v-1.png" width="750">
+<img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/K%C3%A4ytt%C3%B6liittym%C3%A4t.jpg" width="750">
 
-Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän tehtävälistaan.
+Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän harjoittelutilaan, josta päästään vastauksen oikeellisuudesta riippuen joko väärin tai oikein menneeseen tilaan.
 
 ## Perusversion tarjoama toiminnallisuus
 
