@@ -33,9 +33,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 
 - käyttäjä voi vastata kysymyksiin
-
 - käyttäjä näkee oliko vastaus oikein vai väärin
-
 - käyttäjä voi kirjautua ulos järjestelmästä
 
 ## Jatkokehitysideoita
