@@ -3,7 +3,7 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla reisteröityneet käyttäjät voivat harjoitella kielten oikeinkirjoitusta. Kaikilla rekisteröityneillä käyttäjillä on oma harjoitelusivunsa.
+Sovelluksen avulla reisteröityneet käyttäjät voivat harjoitella kielten oikeinkirjoitusta. Kaikilla rekisteröityneillä käyttäjillä on oma harjoitelusivunsa. Aluksi suomi-engalanti sanakirja (kielen vaihto toiminnalissuus lisätään ajan salliessa) __!__
 
 ## Käyttäjät
 
