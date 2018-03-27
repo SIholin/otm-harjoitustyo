@@ -1,7 +1,7 @@
 # OTM-harjoitustyö
 
 
-__Laskarit__ kohdan alata löytyy _linkitettynä_ **viikkotehtävät_!_**
+__Laskarit__ kohdan alata löytyy _linkitettynä_ **viikkotehtävät!**
 
 
 ## Laskarit
@@ -18,4 +18,4 @@ __Laskarit__ kohdan alata löytyy _linkitettynä_ **viikkotehtävät_!_**
 
 [Unicafe](https://github.com/SIholin/otm-harjoitustyo/tree/master/laskarit/viikko2/Unicafe)
 
-[Screenshot](https://github.com/SIholin/otm-harjoitustyo/blob/master/laskarit/viikko2/Screenshot%20from%202018-03-27%2013-33-15.png)
+[Screenshot](https://github.com/SIholin/otm-harjoitustyo/blob/master/laskarit/viikko2/Screenshot.png)
