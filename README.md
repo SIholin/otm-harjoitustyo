@@ -1,7 +1,7 @@
 # OTM-harjoitustyö
 
 
-__Laskarit__ kohdan alata löytyy _linkitettynä_ **viikkotehtävät** ja __Dokumentaation__ alapuolelta löytyy sovelluksen dokumentaatio _linkien_ takaa **!**
+__Laskarit__ kohdan alata löytyy _linkitettynä_ **viikkotehtävät** ja __Dokumentaation__ alapuolelta löytyy sovelluksen dokumentaatio _linkkien_ takaa **!**
 
 
 ## Laskarit
