@@ -43,6 +43,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seuraavilla toiminnallisuuksilla
 
 - käyttäjä voi valita harjoiteltavan kielen
+- sovellus näyttää vastauksen yhteydessä mahdolliset synonyymit
 - käyttäjä näkee tilaston kuinka hyvin osannut
 - käyttäjä näkee mitkä sanat osannut ja mitä ei
 - käyttäjätunnuksen (ja siihen liittyvien todojen) poisto
