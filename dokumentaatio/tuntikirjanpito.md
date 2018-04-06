@@ -8,6 +8,7 @@
 | 27.3  | 2    | pajassa toisen viikon laskari tehtävien tekoa |
 |       | 2    | vaativuusmäärittelydokumentti |
 |       | 2    | harjoitustyön koodauksen aloitus|
+|28.3   | 2    | harjoitustyön tekoa 
 | yht   | 13   | |
 
 
