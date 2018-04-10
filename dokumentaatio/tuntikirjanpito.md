@@ -9,7 +9,8 @@
 | 28.3  | 2    | harjoitustyön projektin luontia|
 | 9.4   | 1    | harjoitustyön luokkien tekoa|
 | 10.4  | 2    | harjoitustyön avauskäyttöliittymän toteutus|
-| yht   | 14   |
+|       | 1    | harjoitustyön user-luokalle testien tekoa|
+| yht   | 15   |
 
 
 
