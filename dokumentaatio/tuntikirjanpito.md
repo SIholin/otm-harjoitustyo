@@ -1,4 +1,4 @@
-# työaikakirjanpito
+# Työaikakirjanpito
 
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
@@ -10,6 +10,6 @@
 | 9.4   | 1    | harjoitustyön luokkien tekoa|
 | 10.4  | 2    | harjoitustyön avauskäyttöliittymän toteutus|
 | yht   | 14   |
-|
+
 
 
