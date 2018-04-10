@@ -1,7 +1,7 @@
 # OTM-harjoitustyö
 
 
-__Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ takana on __vaativuusmäärittely__, __työaikakirjanpito__ ja itse __sovellus___ **!**
+__Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ takana on __vaativuusmäärittely__, __työaikakirjanpito__ ja itse __sovellus__ **!**
 
 
 ## Dokumentaatio
