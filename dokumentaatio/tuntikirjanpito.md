@@ -9,6 +9,7 @@
 |       | 2    | vaativuusmäärittelydokumentti |
 |       | 2    | harjoitustyön koodauksen aloitus|
 |28.3   | 2    | harjoitustyön tekoa 
+|9.4    | 1    | harjoitustyön tekoa
 | yht   | 13   | |
 
 
