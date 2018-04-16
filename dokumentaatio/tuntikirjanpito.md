@@ -2,14 +2,16 @@
 
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
-| 12.3. | 2    | aloitusluetno |
 | 19.3. | 3    | pajassa terminaalin käytön harjoittelua |
 | 27.3  | 2    | vaativuusmäärittelydokumentti |
-|       | 2    | harjoitustyön toteutuksen suunnittelu|
-| 28.3  | 2    | harjoitustyön projektin luontia|
-| 9.4   | 1    | harjoitustyön luokkien tekoa|
-| 10.4  | 2    | harjoitustyön avauskäyttöliittymän toteutus|
-|       | 1    | harjoitustyön user-luokalle testien tekoa|
+|       | 2    | työn toteutuksen suunnittelu|
+| 28.3  | 2    | projektin luontia|
+| 9.4   | 1    | luokkien tekoa|
+| 10.4  | 2    | avauskäyttöliittymän toteutus|
+|       | 1    | user-luokalle testien tekoa|
+| 14.4  | 2    | toisen käyttöliittymä ikkunan luonti|
+| 15.4  | 2    | tietokannan teko|
+| 16.4  |      | koodin "kaunistamista"|
 | yht   | 15   |
 
 
