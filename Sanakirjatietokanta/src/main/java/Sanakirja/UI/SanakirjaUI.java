@@ -5,72 +5,46 @@
  */
 package Sanakirja.UI;
 
-import Sanakirja.Domain.User;
 import Sanakirja.Dao.Database;
 import Sanakirja.Dao.UserDao;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import Sanakirja.Domain.User;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javafx.application.Application;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.paint.Color;
-import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.geometry.Insets;
+import javafx.scene.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.*;
 
 /**
  *
  * @author ihqsanna
  */
-public class SanakirjaUI extends Application {
-
+public class SanakirjaUI {
+    
     private Scene loginScene;
     private Scene newUserScene;
+    private Scene mainScene;
     private UserDao userDao;
     private Database database;
-    private Connection connection;
-    private PreparedStatement statement;
-    private ResultSet resultSet;
-
-    private Label menuLabel;
-
-    @Override
-    public void init() throws Exception {
-        connection = DriverManager.getConnection("jdbc:sqlite:Sanakirja.db");
-
-        statement = connection.prepareStatement("SELECT 1");
-
-        resultSet = statement.executeQuery();
-
-        if (resultSet.next()) {
-            System.out.println("Hei tietokantamaailma!");
-        } else {
-            System.out.println("Yhteyden muodostaminen epäonnistui.");
-        }
-        database = new Database("jdbc:sqlite:Sanakirja.db");
-//        
+    private Stage primaryStage;
+    
+    
+    public SanakirjaUI(Database database){
+        this.database = database;
         userDao = new UserDao(database);
+        
     }
-
-    public static void main(String[] args) throws Exception {
-
-        // TODO code application logic here
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws SQLException {
-
-        // LOGIN SCENE
-        VBox loginPane = new VBox(10);
+    
+    public void loginStart(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+         VBox loginPane = new VBox(10);
         HBox usernameInputPane = new HBox(10);
 //        HBox passwordInputPane = new HBox(10);
 
@@ -115,19 +89,24 @@ public class SanakirjaUI extends Application {
         createButton.setOnAction(a -> {
             usernameInput.setText("");
             loginMessage.setText("");
-            primaryStage.setScene(newUserScene);
+            primaryStage.setScene(newUserStart());
         });
 
         loginPane.getChildren().addAll(usernameInputPane, loginMessage, loginButton, createButton);
 
         loginScene = new Scene(loginPane, 400, 250);
-
-        // CREATE NEW USER SCENE
-        VBox newUserPane = new VBox(10);
+         primaryStage.setTitle("Sanakirja");
+        primaryStage.setScene(loginScene);
+        primaryStage.show();
+        
+    }
+    
+    public Scene newUserStart() {
+         VBox newUserPane = new VBox(10);
         HBox newUsernameInputPane = new HBox(10);
 
         newUserPane.setPadding(new Insets(10));
-        Label newUsernameLabel = new Label("Insert username");
+        Label newUsernameLabel = new Label("Insert new username");
         TextField newUsernameInput = new TextField();
 
         newUsernameInputPane.getChildren().addAll(newUsernameLabel, newUsernameInput);
@@ -154,7 +133,7 @@ public class SanakirjaUI extends Application {
                 }
                 if (find == false) {
 
-                    userDao.saveOrUpdate(new User(null, username));
+                    userDao.save(new User(null, username));
                     createMessage.setText("New user " + username + " created!");
                     createMessage.setTextFill(Color.DARKGREEN);
 
@@ -173,28 +152,8 @@ public class SanakirjaUI extends Application {
 
         newUserPane.getChildren().addAll(newUsernameInputPane, createMessage, newUserButton, backToLogin);
 
-        newUserScene = new Scene(newUserPane, 400, 250);
-
-        // SETUP PRIMARY STAGE
-        primaryStage.setTitle("Sanakirja");
-        primaryStage.setScene(loginScene);
-        primaryStage.show();
-        primaryStage.setOnCloseRequest(h -> {
-            try {
-                resultSet.close();
-                connection.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-//            
-//            
-        });
-
+         return newUserScene = new Scene(newUserPane, 400, 250);
     }
-
-    @Override
-    public void stop() {
-        System.out.println("Sovellus sulkeutuu");
-    }
-
+    
+   
 }
