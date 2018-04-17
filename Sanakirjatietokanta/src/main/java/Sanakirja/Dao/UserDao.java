@@ -22,13 +22,13 @@ import java.util.List;
  * @author ihqsanna
  */
 public class UserDao implements Dao<User, Integer> {
-    
+
     private Database database;
-    
+
     public UserDao(Database database) {
         this.database = database;
     }
-    
+
     @Override
     public User findOne(Integer key) throws SQLException {
         Connection conn = database.getConnection();
@@ -47,14 +47,13 @@ public class UserDao implements Dao<User, Integer> {
         rs.close();
 
         //conn.close();
-
         return user;
-       
+
     }
 
     @Override
     public ArrayList<User> findAll() throws SQLException {
-         Connection conn = database.getConnection();
+        Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM User");
         ArrayList<User> users = new ArrayList();
 
@@ -71,11 +70,11 @@ public class UserDao implements Dao<User, Integer> {
         conn.close();
 
         return users;
-      
+
     }
 
     @Override
-     public User save(User object) throws SQLException {
+    public User save(User object) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO User" + "(username)" + "VALUES (?)");
 
@@ -100,8 +99,6 @@ public class UserDao implements Dao<User, Integer> {
 
     }
 
-    
-
     @Override
     public void delete(Integer key) throws SQLException {
         Connection conn = database.getConnection();
@@ -113,5 +110,5 @@ public class UserDao implements Dao<User, Integer> {
         stmt.close();
         conn.close();
     }
-    
+
 }

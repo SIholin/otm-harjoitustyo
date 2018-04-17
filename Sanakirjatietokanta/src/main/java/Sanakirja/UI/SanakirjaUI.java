@@ -27,24 +27,23 @@ import javafx.stage.*;
  * @author ihqsanna
  */
 public class SanakirjaUI {
-    
+
     private Scene loginScene;
     private Scene newUserScene;
     private Scene mainScene;
     private UserDao userDao;
     private Database database;
     private Stage primaryStage;
-    
-    
-    public SanakirjaUI(Database database){
+
+    public SanakirjaUI(Database database) {
         this.database = database;
         userDao = new UserDao(database);
-        
+
     }
-    
+
     public void loginStart(Stage primaryStage) {
         this.primaryStage = primaryStage;
-         VBox loginPane = new VBox(10);
+        VBox loginPane = new VBox(10);
         HBox usernameInputPane = new HBox(10);
 //        HBox passwordInputPane = new HBox(10);
 
@@ -95,14 +94,14 @@ public class SanakirjaUI {
         loginPane.getChildren().addAll(usernameInputPane, loginMessage, loginButton, createButton);
 
         loginScene = new Scene(loginPane, 400, 250);
-         primaryStage.setTitle("Sanakirja");
+        primaryStage.setTitle("Sanakirja");
         primaryStage.setScene(loginScene);
         primaryStage.show();
-        
+
     }
-    
+
     public Scene newUserStart() {
-         VBox newUserPane = new VBox(10);
+        VBox newUserPane = new VBox(10);
         HBox newUsernameInputPane = new HBox(10);
 
         newUserPane.setPadding(new Insets(10));
@@ -152,8 +151,7 @@ public class SanakirjaUI {
 
         newUserPane.getChildren().addAll(newUsernameInputPane, createMessage, newUserButton, backToLogin);
 
-         return newUserScene = new Scene(newUserPane, 400, 250);
+        return newUserScene = new Scene(newUserPane, 400, 250);
     }
-    
-   
+
 }

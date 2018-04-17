@@ -15,12 +15,11 @@ import java.util.List;
 
 public class Database {
 
-   private String databaseAddress;
-  
+    private String databaseAddress;
 
     public Database(String databaseAddress) {
         this.databaseAddress = databaseAddress;
-        
+
     }
 
     public Connection getConnection() throws SQLException {
@@ -48,8 +47,6 @@ public class Database {
 
     private List<String> sqliteSentences() {
         ArrayList<String> list = new ArrayList<>();
-        
- 
 
         return list;
     }

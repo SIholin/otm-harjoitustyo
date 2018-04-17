@@ -16,7 +16,7 @@ enum Language {
  * @author ihqsanna
  */
 public class Word {
-    
+
     public final int id;
     private Map<Language, String> translations;
 
