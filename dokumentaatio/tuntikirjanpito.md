@@ -11,8 +11,10 @@
 |       | 1    | user-luokalle testien tekoa|
 | 14.4  | 2    | toisen käyttöliittymä ikkunan luonti|
 | 15.4  | 2    | tietokannan teko|
-| 16.4  |      | koodin "kaunistamista"|
-| yht   | 15   |
+| 16.4  | 2    | koodin "kaunistamista" ja käyttöliittymän irroittaminen mainista|
+|       | 1    | testien tekemistä UserDaolle |
+| 17.4  | 5    | checkstylen mukaista parantelua, testit valmiiksi UserDaolle|
+| yht   | 25   |
 
 
 
