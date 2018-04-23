@@ -14,7 +14,8 @@
 | 16.4  | 2    | koodin "kaunistamista" ja käyttöliittymän irroittaminen mainista|
 |       | 1    | testien tekemistä UserDaolle |
 | 17.4  | 5    | checkstylen mukaista parantelua, testit valmiiksi UserDaolle|
-| yht   | 25   |
+| 23.4  | 3    | word luokka valmiiksi ja sen käyttöönotto ohjelmaan ja tietokantaan|
+| yht   | 28   |
 
 
 
