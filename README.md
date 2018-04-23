@@ -1,7 +1,7 @@
 # OTM-harjoitustyö
 
 
-__Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ takana on __vaativuusmäärittely__, __työaikakirjanpito__, __arkkitehtuuri__ ja itse __sovellus__ **!**
+__Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ takana on __vaativuusmäärittely__, __työaikakirjanpito__, __arkkitehtuuri__ ja itse __sovellus__ **!** Sovellus on sanakirjaa jäljittelevä. Käyttäjä voi luoda käyttäjä tunnuksen ja kirjautua sisään, jonka jälkeen voi harjoitella suomi-englanti sanoja.
 
 
 ## Dokumentaatio
