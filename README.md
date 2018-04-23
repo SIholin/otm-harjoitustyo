@@ -13,3 +13,33 @@ __Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ 
 [Arkkitehtuuri](https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 [Sovellus](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta)
+
+## Komentorivitoiminnot
+
+### Testaus
+
+Testit suoritetaan komennolla
+
+```
+mvn test
+```
+
+Testikattavuusraportti luodaan komennolla
+
+```
+mvn jacoco:report
+```
+
+Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
+
+
+### Checkstyle
+
+Tiedostoon [checkstyle.xml](https://github.com/SIholin/otm-harjoitustyo/blob/master/Sanakirjatietokanta/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+
+```
+ mvn jxr:jxr checkstyle:checkstyle
+```
+
+Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto _target/site/checkstyle.html_
+
