@@ -53,15 +53,17 @@ public class Sanakirja extends Application {
             System.out.println("Connection to database failed.");
         }
         database = new Database("jdbc:sqlite:Sanakirja.db");
-        UI = new SanakirjaUI(database);
+       
 
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+       
         database.init();
+        UI = new SanakirjaUI(database, primaryStage);
         primaryStage.setTitle("Sanakirja");
-        UI.loginStart(primaryStage);
+        UI.loginStart();
     }
 
     @Override

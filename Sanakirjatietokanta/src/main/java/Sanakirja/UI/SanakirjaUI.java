@@ -7,9 +7,13 @@ package Sanakirja.UI;
 
 import Sanakirja.Dao.Database;
 import Sanakirja.Dao.UserDao;
+import Sanakirja.Dao.wordDao;
 import Sanakirja.Domain.User;
+import Sanakirja.Domain.Word;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
@@ -32,17 +36,21 @@ public class SanakirjaUI {
     private Scene newUserScene;
     private Scene mainScene;
     private UserDao userDao;
+    private wordDao wordDao;
     private Database database;
     private Stage primaryStage;
+    private String username;
 
-    public SanakirjaUI(Database database) {
+    public SanakirjaUI(Database database, Stage primaryStage) {
+        this.primaryStage = primaryStage;
         this.database = database;
         userDao = new UserDao(database);
+        wordDao = new wordDao(database);
 
     }
 
-    public void loginStart(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    public void loginStart() {
+        
         VBox loginPane = new VBox(10);
         HBox usernameInputPane = new HBox(10);
 //        HBox passwordInputPane = new HBox(10);
@@ -64,13 +72,13 @@ public class SanakirjaUI {
             ArrayList<User> users;
             try {
                 users = userDao.findAll();
-                String username = usernameInput.getText();
+                username = usernameInput.getText();
                 Boolean find = false;
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).getUsername().equals(username)) {
                         find = true;
                         loginMessage.setText("");
-                        primaryStage.setScene(loginScene);
+                        primaryStage.setScene(mainScene());
                         usernameInput.setText("");
                     }
                 }
@@ -119,7 +127,7 @@ public class SanakirjaUI {
             ArrayList<User> users;
             try {
                 users = userDao.findAll();
-                String username = newUsernameInput.getText();
+                username = newUsernameInput.getText();
                 Boolean find = false;
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).getUsername().equals(username)) {
@@ -152,6 +160,62 @@ public class SanakirjaUI {
         newUserPane.getChildren().addAll(newUsernameInputPane, createMessage, newUserButton, backToLogin);
 
         return newUserScene = new Scene(newUserPane, 400, 250);
+    }
+    
+    public Scene mainScene() throws SQLException {
+        
+        VBox mainPane = new VBox(10);
+        HBox mainInputPane = new HBox(10);
+        Label usernameLabel = new Label(username);
+        mainPane.setPadding(new Insets(10));
+        Word random = randomWord();
+        Label wordLabel = new Label(random.getForm() + " = ");
+        TextField tryInput = new TextField();
+
+        mainInputPane.getChildren().addAll(wordLabel, tryInput);
+
+        Label createMessage = new Label();
+
+        Button answerButton = new Button("Answer");
+        Button newQuestionButton = new Button("New");
+        Button logOutButton = new Button("Logout");
+        
+        answerButton.setOnAction(e -> {
+            String trying = tryInput.getText();
+            if (random.getTransaltion().equals(trying)) {
+                createMessage.setText("That is right! :)");
+                createMessage.setTextFill(Color.DARKGREEN);
+            } else {
+                createMessage.setText("That is wrong :(");
+                createMessage.setTextFill(Color.DARKRED);
+            }
+            
+        });
+        
+        newQuestionButton.setOnAction(e -> {
+            tryInput.setText("");
+            try {
+                primaryStage.setScene(mainScene());
+            } catch (SQLException ex) {
+                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        logOutButton.setOnAction(e -> {
+            tryInput.setText("");
+            createMessage.setText("");
+            primaryStage.setScene(loginScene);
+        });
+        
+        mainPane.getChildren().addAll(usernameLabel, logOutButton, mainInputPane, createMessage, answerButton, newQuestionButton);
+        return mainScene = new Scene(mainPane, 400, 250);
+    }
+    
+    public Word randomWord() throws SQLException {
+        List<Word> words = wordDao.findAll();
+        Random r = new Random();
+        
+        return words.get(r.nextInt(words.size()));
     }
 
 }

@@ -7,9 +7,7 @@ package Sanakirja.Domain;
 
 import java.util.Map;
 
-enum Language {
-    EN, FI;
-}
+
 
 /**
  *
@@ -17,10 +15,30 @@ enum Language {
  */
 public class Word {
 
-    public final int id;
-    private Map<Language, String> translations;
+    public Integer id;
+    public String form;
+    public String translation;
+   
+   
 
-    public Word(int id) {
+    public Word(Integer id, String form, String translation) {
         this.id = id;
+        this.form = form;
+        this.translation = translation;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getForm() {
+        return form;
+    }
+
+    public String getTransaltion() {
+        return translation;
+    }
+
+
+    
 }
