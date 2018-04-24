@@ -1,8 +1,8 @@
-package Tests;
+package tests;
 
-import Sanakirja.Dao.Database;
-import Sanakirja.Dao.UserDao;
-import Sanakirja.Domain.User;
+import sanakirja.dao.Database;
+import sanakirja.dao.UserDao;
+import sanakirja.domain.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

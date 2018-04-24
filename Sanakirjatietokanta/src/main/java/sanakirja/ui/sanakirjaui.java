@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Sanakirja.UI;
+package sanakirja.ui;
 
-import Sanakirja.Dao.Database;
-import Sanakirja.Dao.UserDao;
-import Sanakirja.Dao.wordDao;
-import Sanakirja.Domain.User;
-import Sanakirja.Domain.Word;
+import sanakirja.dao.Database;
+import sanakirja.dao.UserDao;
+import sanakirja.dao.wordDao;
+import sanakirja.domain.User;
+import sanakirja.domain.Word;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ import javafx.stage.*;
  *
  * @author ihqsanna
  */
-public class SanakirjaUI {
+public class sanakirjaui {
 
     private Scene loginScene;
     private Scene newUserScene;
@@ -42,7 +42,7 @@ public class SanakirjaUI {
     private Stage primaryStage;
     private String username;
 
-    public SanakirjaUI(Database database, Stage primaryStage) {
+    public sanakirjaui(Database database, Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.database = database;
         userDao = new UserDao(database);
@@ -89,7 +89,7 @@ public class SanakirjaUI {
                 }
 
             } catch (SQLException ex) {
-                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(sanakirjaui.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
@@ -147,7 +147,7 @@ public class SanakirjaUI {
 
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(sanakirjaui.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
@@ -209,7 +209,7 @@ public class SanakirjaUI {
             try {
                 primaryStage.setScene(mainScene());
             } catch (SQLException ex) {
-                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(sanakirjaui.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
 
@@ -225,7 +225,7 @@ public class SanakirjaUI {
                 createMessage.setText("");
                 primaryStage.setScene(addWordScene());
             } catch (SQLException ex) {
-                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(sanakirjaui.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
        
@@ -295,7 +295,7 @@ public class SanakirjaUI {
                     message.setTextFill(Color.DARKGREEN);
                     wordDao.save(new Word(null, newWord.getText(), newTranslation.getText()));
                 } catch (SQLException ex) {
-                    Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(sanakirjaui.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 message.setText("Word " + newWord.getText() + " already exists");
@@ -309,7 +309,7 @@ public class SanakirjaUI {
             try {
                 primaryStage.setScene(mainScene());
             } catch (SQLException ex) {
-                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(sanakirjaui.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         mainPane.getChildren().addAll(wordFirstPane, wordInputPane, translationPane, message, createButton);

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Sanakirja.Dao;
+package sanakirja.dao;
 
-import Sanakirja.Domain.User;
-import Sanakirja.Domain.Word;
+import sanakirja.domain.User;
+import sanakirja.domain.Word;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +19,14 @@ import java.util.List;
  * @author ihqsanna
  */
 public class wordDao implements Dao<Word, Integer> {
+
     private Database database;
-    
+
     public wordDao(Database db) {
         this.database = db;
     }
-     @Override
+
+    @Override
     public Word findOne(Integer key) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Word WHERE id = ?");
@@ -50,26 +52,25 @@ public class wordDao implements Dao<Word, Integer> {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Word");
         ArrayList<Word> words = new ArrayList();
-        
+
         ResultSet rs = stmt.executeQuery();
-        
+
         while (rs.next()) {
-        Word word = new Word(rs.getInt("id"), rs.getString("form"), rs.getString("translation"));
-        words.add(word);
+            Word word = new Word(rs.getInt("id"), rs.getString("form"), rs.getString("translation"));
+            words.add(word);
         }
-        
+
         stmt.close();
         rs.close();
 
         conn.close();
-        
 
         return words;
     }
 
     @Override
     public Word save(Word object) throws SQLException {
-         Connection conn = database.getConnection();
+        Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Word" + "(form, translation)" + "VALUES (?, ?)");
 
         stmt.setString(1, object.getForm());
@@ -80,9 +81,8 @@ public class wordDao implements Dao<Word, Integer> {
         stmt = conn.prepareStatement("SELECT * FROM Word WHERE form = ? AND translation = ?");
         stmt.setString(1, object.getForm());
         stmt.setString(2, object.getTransaltion());
-        
-//        stmt.setString(2, object.getPassword());
 
+//        stmt.setString(2, object.getPassword());
         ResultSet rs = stmt.executeQuery();
         rs.next();
 
@@ -96,6 +96,6 @@ public class wordDao implements Dao<Word, Integer> {
 
     @Override
     public void delete(Integer key) throws SQLException {
-        
+
     }
 }

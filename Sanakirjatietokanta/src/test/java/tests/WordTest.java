@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tests;
+package tests;
 
-import Sanakirja.Domain.Word;
+import sanakirja.domain.Word;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;

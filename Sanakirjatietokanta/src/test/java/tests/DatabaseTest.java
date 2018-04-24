@@ -1,7 +1,7 @@
-package Tests;
+package tests;
 
 //import Sanakirja.Dao.Database;
-import Sanakirja.Dao.UserDao;
+import sanakirja.dao.UserDao;
 //import java.sql.Connection;
 //import java.sql.DriverManager;
 //import java.sql.SQLException;
