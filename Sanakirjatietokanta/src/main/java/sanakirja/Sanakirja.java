@@ -1,7 +1,7 @@
 package sanakirja;
 
 import sanakirja.dao.Database;
-import sanakirja.ui.sanakirjaui;
+import sanakirja.ui.SanakirjaUI;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,7 +22,7 @@ import sun.swing.UIAction;
  */
 public class Sanakirja extends Application {
 
-    private sanakirjaui UI;
+    private SanakirjaUI UI;
 
     private Database database;
     private Connection connection;
@@ -61,7 +61,7 @@ public class Sanakirja extends Application {
     public void start(Stage primaryStage) throws Exception {
        
         database.init();
-        UI = new sanakirjaui(database, primaryStage);
+        UI = new SanakirjaUI(database, primaryStage);
         primaryStage.setTitle("Sanakirja");
         UI.loginStart();
     }
