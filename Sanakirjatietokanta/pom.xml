@@ -32,7 +32,7 @@
                 <version>0.8.0</version>
                 <configuration>
                     <excludes>
-                        <exclude>Sanakirja/UI/*</exclude>
+                        <exclude>sanakirja/ui/*</exclude>
                     </excludes>
                 </configuration> 
                 <executions>
