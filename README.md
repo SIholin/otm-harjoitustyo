@@ -14,6 +14,10 @@ __Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ 
 
 [Sovellus](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta)
 
+## Releaset
+
+[viikko5](https://github.com/SIholin/otm-harjoitustyo/releases/tag/viikko5)
+
 ## Komentorivitoiminnot
 
 ### Testaus
