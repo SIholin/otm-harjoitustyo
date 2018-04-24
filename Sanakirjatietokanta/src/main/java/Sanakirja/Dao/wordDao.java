@@ -46,10 +46,10 @@ public class wordDao implements Dao<Word, Integer> {
     }
 
     @Override
-    public List<Word> findAll() throws SQLException {
+    public ArrayList<Word> findAll() throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Word");
-        List<Word> words = new ArrayList();
+        ArrayList<Word> words = new ArrayList();
         
         ResultSet rs = stmt.executeQuery();
         
@@ -69,7 +69,29 @@ public class wordDao implements Dao<Word, Integer> {
 
     @Override
     public Word save(Word object) throws SQLException {
-        return object;
+         Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Word" + "(form, translation)" + "VALUES (?, ?)");
+
+        stmt.setString(1, object.getForm());
+        stmt.setString(2, object.getTransaltion());
+        stmt.executeUpdate();
+        stmt.close();
+
+        stmt = conn.prepareStatement("SELECT * FROM Word WHERE form = ? AND translation = ?");
+        stmt.setString(1, object.getForm());
+        stmt.setString(2, object.getTransaltion());
+        
+//        stmt.setString(2, object.getPassword());
+
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+
+        Word word = new Word(rs.getInt("id"), rs.getString("form"), rs.getString("translation"));
+
+        stmt.close();
+        rs.close();
+        conn.close();
+        return word;
     }
 
     @Override

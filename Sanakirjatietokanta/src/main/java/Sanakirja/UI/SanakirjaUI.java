@@ -35,6 +35,7 @@ public class SanakirjaUI {
     private Scene loginScene;
     private Scene newUserScene;
     private Scene mainScene;
+    private Scene addWordScene;
     private UserDao userDao;
     private wordDao wordDao;
     private Database database;
@@ -50,7 +51,7 @@ public class SanakirjaUI {
     }
 
     public void loginStart() {
-        
+
         VBox loginPane = new VBox(10);
         HBox usernameInputPane = new HBox(10);
 //        HBox passwordInputPane = new HBox(10);
@@ -161,15 +162,26 @@ public class SanakirjaUI {
 
         return newUserScene = new Scene(newUserPane, 400, 250);
     }
-    
+
     public Scene mainScene() throws SQLException {
-        
+
         VBox mainPane = new VBox(10);
         HBox mainInputPane = new HBox(10);
+        HBox mainFirstPane = new HBox(10);
         Label usernameLabel = new Label(username);
+        Button logOutButton = new Button("Logout");
+        mainFirstPane.getChildren().addAll(usernameLabel, logOutButton);
+
         mainPane.setPadding(new Insets(10));
-        Word random = randomWord();
-        Label wordLabel = new Label(random.getForm() + " = ");
+        String w = "";
+        Label wordLabel = new Label("");
+         ArrayList<Word> words = wordDao.findAll();
+        if (!words.isEmpty()) {
+            Word random = randomWord();
+            wordLabel.setText(random.getForm() + " = ");
+            w = random.getTransaltion();
+        }
+        
         TextField tryInput = new TextField();
 
         mainInputPane.getChildren().addAll(wordLabel, tryInput);
@@ -177,21 +189,21 @@ public class SanakirjaUI {
         Label createMessage = new Label();
 
         Button answerButton = new Button("Answer");
-        Button newQuestionButton = new Button("New");
-        Button logOutButton = new Button("Logout");
-        
+        Button newQuestionButton = new Button("New word");
+        Button newWordButton = new Button("Add new word");
+        final String w2 = w;
         answerButton.setOnAction(e -> {
             String trying = tryInput.getText();
-            if (random.getTransaltion().equals(trying)) {
+            if (w2.equals(trying)) {
                 createMessage.setText("That is right! :)");
                 createMessage.setTextFill(Color.DARKGREEN);
             } else {
                 createMessage.setText("That is wrong :(");
                 createMessage.setTextFill(Color.DARKRED);
             }
-            
+
         });
-        
+
         newQuestionButton.setOnAction(e -> {
             tryInput.setText("");
             try {
@@ -200,22 +212,110 @@ public class SanakirjaUI {
                 Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
+
         logOutButton.setOnAction(e -> {
             tryInput.setText("");
             createMessage.setText("");
             primaryStage.setScene(loginScene);
         });
-        
-        mainPane.getChildren().addAll(usernameLabel, logOutButton, mainInputPane, createMessage, answerButton, newQuestionButton);
+
+        newWordButton.setOnAction(e -> {
+            try {
+                tryInput.setText("");
+                createMessage.setText("");
+                primaryStage.setScene(addWordScene());
+            } catch (SQLException ex) {
+                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+       
+        if (words.isEmpty()) {
+            mainPane.getChildren().addAll(mainFirstPane, newWordButton);
+        } else {
+
+            mainPane.getChildren().addAll(mainFirstPane, mainInputPane, createMessage, answerButton, newQuestionButton, newWordButton);
+        }
+
         return mainScene = new Scene(mainPane, 400, 250);
     }
-    
+
     public Word randomWord() throws SQLException {
         List<Word> words = wordDao.findAll();
         Random r = new Random();
-        
+
         return words.get(r.nextInt(words.size()));
+    }
+
+    public Scene addWordScene() throws SQLException {
+        VBox addWordPane = new VBox(10);
+        addWordPane.setPadding(new Insets(10));
+        HBox mainPane = new HBox(10);
+        HBox wordInputPane = new HBox(10);
+        HBox translationPane = new HBox(10);
+        HBox wordFirstPane = new HBox(10);
+
+        Button logoutButton = new Button("logout");
+        Label usernameLabel = new Label(username);
+        Button backToMainButton = new Button("Back to main");
+        wordFirstPane.setPadding(new Insets(10));
+        wordInputPane.setPadding(new Insets(10));
+        Label message = new Label();
+
+        wordFirstPane.getChildren().addAll(usernameLabel, logoutButton, backToMainButton);
+
+        Label word = new Label("Word");
+        TextField newWord = new TextField();
+
+        wordInputPane.getChildren().addAll(word, newWord);
+
+        Label translation = new Label("Translation");
+        TextField newTranslation = new TextField();
+
+        translationPane.getChildren().addAll(translation, newTranslation);
+
+        Button createButton = new Button("Add word");
+
+        logoutButton.setOnAction(e -> {
+            newWord.setText("");
+            newTranslation.setText("");
+            message.setText("");
+            primaryStage.setScene(loginScene);
+        });
+        ArrayList<Word> words = wordDao.findAll();
+        createButton.setOnAction(e -> {
+            Boolean find = false;
+            for (int i = 0; i < words.size(); i++) {
+                if (words.get(i).getForm().equals(newWord.getText())) {
+                    find = true;
+                }
+            }
+            if (!find) {
+                try {
+                    message.setText("New word " + newWord.getText() + " has been added");
+                    message.setTextFill(Color.DARKGREEN);
+                    wordDao.save(new Word(null, newWord.getText(), newTranslation.getText()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                message.setText("Word " + newWord.getText() + " already exists");
+                message.setTextFill(Color.DARKRED);
+            }
+        });
+        backToMainButton.setOnAction(e -> {
+            newWord.setText("");
+            newTranslation.setText("");
+            message.setText("");
+            try {
+                primaryStage.setScene(mainScene());
+            } catch (SQLException ex) {
+                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        mainPane.getChildren().addAll(wordFirstPane, wordInputPane, translationPane, message, createButton);
+
+        return addWordScene = new Scene(mainPane, 400, 250);
+
     }
 
 }
