@@ -15,7 +15,8 @@
 |       | 1    | testien tekemistä UserDaolle |
 | 17.4  | 5    | checkstylen mukaista parantelua, testit valmiiksi UserDaolle|
 | 23.4  | 3    | word luokka valmiiksi ja sen käyttöönotto ohjelmaan ja tietokantaan|
-| yht   | 28   |
+| 24.4  | 4    | käytäjälle mahdollisuus luoda omia sanoja sanakirjaan|
+| yht   | 32   |
 
 
 
