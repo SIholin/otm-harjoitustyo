@@ -121,6 +121,7 @@ public class MainScene {
         answerButton.setOnAction(e -> {
             String trying = tryInput.getText();
             if (w2.equals(trying)) {
+                attempts++;
                 createMessage.setText("That is right! :)");
                 createMessage.setTextFill(Color.DARKGREEN);
                 try {
@@ -130,6 +131,7 @@ public class MainScene {
                 }
             } else {
                 fail++;
+                attempts ++;
                 System.out.println(fail);
                 createMessage.setText("That is wrong :(");
                 createMessage.setTextFill(Color.DARKRED);

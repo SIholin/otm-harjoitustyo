@@ -63,10 +63,11 @@ public class StatisticsScene {
         Label failLabel = new Label("Fails = " + user.getFailNumber());
         Label successesLabel = new Label("Successes = " + (user.getAllAttempts() - user.getFailNumber()));
         Label allLabel = new Label("All attempts = " + user.getAllAttempts());
-        Label successLabel = new Label("Success = 100 %");
+        Label successLabel = new Label("Success = 0 %");
         if (user.getAllAttempts() != 0) {
             successLabel.setText("Success = " + ((user.getAllAttempts() - user.getFailNumber()) / user.getAllAttempts()) + " %");
         }
+        
 
         logout.setOnAction(e -> {
             ui.loginStart();
