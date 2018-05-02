@@ -26,3 +26,22 @@ Sovelluksen loogisen datamallin muodostavat [User](https://github.com/SIholin/ot
 
 <img src=”https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/Luokkakaavio.jpg”  width=””400”>
 
+## Tietojen pysyväistallennus
+
+Pakkauksen sanakirja.dao luokat UserDao ja WordDao pitävät huolen tietojen tallentamisesta Sanakirja.db tietokantaan. Nämä noudattavat Data Access Object -suunnittelumallia. Luokat on eristetty Dao rajapinnan taakse.
+
+### Tietokanta
+
+Sanakirja.db tietokanta on sqlite tietokanta. Se pitää sisällään sanojen ja käyttäjien tallentamis ominaisuuden, joiden taulut on luotu seuraavilla lauseilla.
+
+__User:__
+ 
+<pre>
+CREATE TABLE User (id integer PRIMARY KEY, username varchar(50), password varchar(50), failNumber integer, fails varchar(1000000), allAttempts integer);
+</pre>
+
+__Word:__
+
+<pre>
+CREATE TABLE Word (id integer PRIMARY KEY, form varchar(50), translation varcahr(50));
+</pre>
