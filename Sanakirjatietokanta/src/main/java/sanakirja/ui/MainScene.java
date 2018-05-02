@@ -27,8 +27,9 @@ import sanakirja.domain.User;
 import sanakirja.domain.Word;
 
 /**
+ * Käyttöliittymässä näkyvä ikkuna, kun käyttäjä on onnistuneesti kirjautunut
+ * sisään.
  *
- * 
  */
 public class MainScene {
 
@@ -47,6 +48,10 @@ public class MainScene {
     private int fail;
     private int attempts;
 
+    /**
+     * Ottaa talteen kysisen käyttöliittymän ikkunan tarvitsevat tiedot, kuten
+     * sisäänkirjautuneen käyttäjän.
+     */
     public MainScene(UserDao ud, Database db, Stage ps, WordDao wd, User user) throws SQLException {
         mainPane = new VBox(10);
         mainPane.setPadding(new Insets(10));
@@ -60,9 +65,12 @@ public class MainScene {
         words = worddao.findAll();
         fail = 0;
         this.attempts = 0;
-        
+
     }
 
+    /**
+     * Luo Käyttöliittymä ikkunan ja palauttaa sen.
+     */
     public Scene start() throws SQLException {
 
         SanakirjaUI ui = new SanakirjaUI(database, primaryStage);
@@ -88,7 +96,7 @@ public class MainScene {
         sButton.setOnAction(e -> {
             StatisticsScene st;
             try {
-                
+
                 st = new StatisticsScene(userdao, user, database, primaryStage, worddao);
                 primaryStage.setScene(st.start());
             } catch (SQLException ex) {
@@ -137,7 +145,7 @@ public class MainScene {
         logOutButton.setOnAction(e -> {
             tryInput.setText("");
             createMessage.setText("");
-          
+
             primaryStage.setScene(ui.loginStart());
 
         });
@@ -145,7 +153,7 @@ public class MainScene {
         newWordButton.setOnAction(e -> {
 
             try {
-                
+
                 tryInput.setText("");
                 createMessage.setText("");
                 nws = new NewWordScene(userdao, primaryStage, worddao, database, user);
@@ -168,6 +176,9 @@ public class MainScene {
 
     }
 
+    /**
+     * Arpoo satunnaisen sanan kaikkien tallennettujen sanojen joukosta.
+     */
     public Word randomWord() throws SQLException {
 
         Random r = new Random();
@@ -175,17 +186,28 @@ public class MainScene {
         return words.get(r.nextInt(words.size()));
     }
 
+    /**
+     * Lisää käyttäjän epäonnistuneisiin yritys kertoihin uuden kerran, kun
+     * käyttäjä epäonnistuu arvauksessa.
+     *
+     */
     public void addFails() throws SQLException {
         int f = user.getFailNumber() + fail;
         user.setFailNumber(f);
         userdao.saveOrUpdate(new User(user.getId(), user.getUsername(), user.getPassword(), f, user.getFails(), user.getAllAttempts()));
         fail = 0;
     }
+
+    /**
+     * Lisää käyttäjän kaikkiin arvaus keroihin uuden kerran aina kun käyttäjä
+     * yrittää arvausta.
+     *
+     */
     public void addAttempts() throws SQLException {
         int a = user.getAllAttempts() + attempts;
         user.setAllAttempts(a);
         userdao.saveOrUpdate(new User(user.getId(), user.getUsername(), user.getPassword(), user.getFailNumber(), user.getFails(), a));
         attempts = 0;
-}
+    }
 
 }

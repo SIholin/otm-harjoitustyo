@@ -18,7 +18,7 @@ public class UserTest {
     public void userExsists() {
         assertTrue(user != null);
     }
-    
+
     @Test
     public void idIsRight() {
         assertTrue(user.getId() == 1);
@@ -33,13 +33,14 @@ public class UserTest {
     public void equalswWorks() {
         User user2 = new User(2, "palleroinen", "herkku", 0, "", 3);
         User user3 = new User(3, "ihqsanna", "ruoka", 0, "", 3);
-        
+
         assertFalse(user.equals("kukka"));
         assertTrue(user.equals(user3));
         assertFalse(user.equals(user2));
         assertTrue(user.equals(user));
 
     }
+
     @Test
     public void setFailNumberWorks() {
         user.setFailNumber(10);

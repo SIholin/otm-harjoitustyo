@@ -35,7 +35,7 @@ public class SanakirjaUI {
 
     private Scene loginScene;
     private Scene newUserScene;
-    
+
     private Scene addWordScene;
     private UserDao userDao;
     private WordDao wordDao;
@@ -50,7 +50,7 @@ public class SanakirjaUI {
         this.database = database;
         userDao = new UserDao(database);
         wordDao = new WordDao(database);
-       
+
     }
 
     public Scene loginStart() {
@@ -87,11 +87,11 @@ public class SanakirjaUI {
                     }
                     if (users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(passwordInput.getText())) {
                         find = true;
-                        
+
                         loginMessage.setText("");
                         passwordMessage.setText("");
                         passwordInput.setText("");
-                         mainScene = new MainScene(userDao, database, primaryStage, wordDao, user);
+                        mainScene = new MainScene(userDao, database, primaryStage, wordDao, user);
                         primaryStage.setScene(mainScene.start());
                         usernameInput.setText("");
                     }
@@ -130,10 +130,7 @@ public class SanakirjaUI {
         primaryStage.setScene(loginScene);
         primaryStage.show();
         return loginScene;
-        
+
     }
-
-
-    
 
 }

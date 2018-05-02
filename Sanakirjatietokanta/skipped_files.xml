@@ -6,4 +6,8 @@
 
 <suppressions>
     <suppress files="sanakirja.ui.SanakirjaUI.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="sanakirja.ui.NewUserScene.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="sanakirja.ui.NewWordScene.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="sanakirja.ui.MainScene.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="sanakirja.ui.StatisticsScene.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

@@ -22,7 +22,7 @@ import sun.swing.UIAction;
  */
 public class Sanakirja extends Application {
 
-    private SanakirjaUI UI;
+    private SanakirjaUI ui;
 
     private Database database;
     private Connection connection;
@@ -53,17 +53,16 @@ public class Sanakirja extends Application {
             System.out.println("Connection to database failed.");
         }
         database = new Database("jdbc:sqlite:Sanakirja.db");
-       
 
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-       
+
         database.init();
-        UI = new SanakirjaUI(database, primaryStage);
+        ui = new SanakirjaUI(database, primaryStage);
         primaryStage.setTitle("Sanakirja");
-        UI.loginStart();
+        ui.loginStart();
     }
 
     @Override

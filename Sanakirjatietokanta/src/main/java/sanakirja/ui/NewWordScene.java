@@ -26,9 +26,10 @@ import sanakirja.domain.Word;
 
 /**
  *
- * @author ihqsanna
+ * Käyttöliittymän ikkuna, jossa voi luoda uusia sanoja sovellukseen.
  */
 public class NewWordScene {
+
     private VBox addWordPane;
     private HBox userPane;
     private HBox wordInputPane;
@@ -41,7 +42,10 @@ public class NewWordScene {
     private Scene newWordScene;
     private SanakirjaUI ui;
     private MainScene mainScene;
-    
+
+    /**
+     * Ottaa talteen ikkunan ja uuden sanan luomista varten tarvittavat tiedot.
+     */
     public NewWordScene(UserDao ud, Stage ps, WordDao wd, Database db, User u) {
         addWordPane = new VBox(10);
         addWordPane.setPadding(new Insets(10));
@@ -54,9 +58,12 @@ public class NewWordScene {
         worddao = wd;
         primaryStage = ps;
     }
-        
+
+    /**
+     * Luo käyttöliittymäikkunan elementit ja palauttaa sen.
+     */
     public Scene start() throws SQLException {
-         Button logoutButton = new Button("logout");
+        Button logoutButton = new Button("logout");
         Label usernameLabel = new Label(user.getUsername());
         Button backToMainButton = new Button("Back to main");
         userPane.setPadding(new Insets(10));
@@ -111,7 +118,7 @@ public class NewWordScene {
             newTranslation.setText("");
             message.setText("");
             try {
-                 mainScene = new MainScene(userdao, database, primaryStage, worddao, user);
+                mainScene = new MainScene(userdao, database, primaryStage, worddao, user);
                 primaryStage.setScene(mainScene.start());
             } catch (SQLException ex) {
                 Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);

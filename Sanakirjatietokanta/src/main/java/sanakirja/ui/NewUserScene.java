@@ -24,17 +24,20 @@ import sanakirja.dao.UserDao;
 import sanakirja.domain.User;
 
 /**
- *
- * @author ihqsanna
+ * Käyttöliittymän ikkuna, jonka avulla voi luoda uuden käyttäjän.
  */
 public class NewUserScene {
+
     private VBox newUserPane;
     private HBox usernameInputPane;
     private HBox passwordInputPane;
     private UserDao userdao;
     private Database database;
     private Stage primaryStage;
-    
+
+    /**
+     * Ottaa talteen uuden käyttäjän luomista varten tarvittavat tiedot.
+     */
     public NewUserScene(UserDao userdao, Database database, Stage primaryStage) {
         newUserPane = new VBox(10);
         newUserPane.setPadding(new Insets(10));
@@ -43,9 +46,12 @@ public class NewUserScene {
         this.userdao = userdao;
         this.database = database;
         this.primaryStage = primaryStage;
-        
+
     }
-    
+
+    /**
+     * Luo käyttäjälle näkyvän ikkunan ja paluattaa sen.
+     */
     public Scene start() {
         Label usernameLabel = new Label("Insert username");
         TextField usernameInput = new TextField();
@@ -112,5 +118,5 @@ public class NewUserScene {
         Scene newUserScene = new Scene(newUserPane, 400, 250);
         return newUserScene;
     }
-    
+
 }

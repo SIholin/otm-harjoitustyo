@@ -75,15 +75,16 @@ public class UserDao implements Dao<User, Integer> {
 
     @Override
     public User saveOrUpdate(User object) throws SQLException {
-         if (object.getId() == null) {
+        if (object.getId() == null) {
             return save(object);
         } else {
             return update(object);
         }
 
     }
+
     private User save(User object) throws SQLException {
-           Connection conn = database.getConnection();
+        Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO User" + "(username, password, failNumber, fails, allAttempts)" + "VALUES (?, ?, ?, ?, ?)");
 
         stmt.setString(1, object.getUsername());
@@ -111,12 +112,11 @@ public class UserDao implements Dao<User, Integer> {
         conn.close();
         return user;
     }
-    
+
     private User update(User object) throws SQLException {
-           Connection conn = database.getConnection();
+        Connection conn = database.getConnection();
 
         PreparedStatement stmt = conn.prepareStatement("UPDATE User SET"
-
                 + " username = ?, password = ?, failNumber = ?, fails = ?, allAttempts = ? WHERE id = ?");
 
         stmt.setString(1, object.getUsername());
@@ -131,9 +131,9 @@ public class UserDao implements Dao<User, Integer> {
         stmt.close();
         conn.close();
 
-
         return object;
     }
+
     @Override
     public void delete(Integer key) throws SQLException {
         Connection conn = database.getConnection();

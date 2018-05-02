@@ -24,11 +24,12 @@ import sanakirja.domain.Word;
  * @author ihqsanna
  */
 public class WordDaoTest {
+
     Database database;
     WordDao wordDao;
     Connection connection;
     Word word;
-    
+
     @Before
     public void setUp() throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:test.db");
@@ -40,27 +41,29 @@ public class WordDaoTest {
 
         wordDao = new WordDao(database);
         word = new Word(null, "kissa", "cat");
-         wordDao.saveOrUpdate(word);
+        wordDao.saveOrUpdate(word);
     }
-    
+
     @Test
     public void saveWorks() throws SQLException {
-        
+
         assertTrue(word.getForm().equals("kissa"));
     }
+
     @Test
     public void findAllWorks() throws SQLException {
-       
+
         Word word2 = new Word(null, "koira", "dog");
         wordDao.saveOrUpdate(word2);
-       
-        assertTrue(wordDao.findAll().size()==2);
+
+        assertTrue(wordDao.findAll().size() == 2);
     }
+
     @Test
     public void findOneWorks() throws SQLException {
         assertTrue(wordDao.findOne(1).form.equals("kissa"));
     }
- 
+
     @After
     public void clean() throws SQLException {
         PreparedStatement stmt = connection.prepareStatement("DELETE FROM Word");

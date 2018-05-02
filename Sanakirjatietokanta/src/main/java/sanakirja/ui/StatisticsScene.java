@@ -21,11 +21,13 @@ import sanakirja.dao.WordDao;
 import sanakirja.domain.User;
 
 /**
- * Luo näkymän käyttöliittymään, jonka tarkoituksena on näyttää Käyttäjään liittyviä tuloksia.
- * 
+ * Luo näkymän käyttöliittymään, jonka tarkoituksena on näyttää Käyttäjään
+ * liittyviä tuloksia.
+ *
  */
 public class StatisticsScene {
-    private VBox mainPane; 
+
+    private VBox mainPane;
     private HBox userPane;
     private UserDao userdao;
     private Scene statisticsScene;
@@ -36,7 +38,7 @@ public class StatisticsScene {
     private Database database;
     private Stage primaryStage;
     private WordDao worddao;
-            
+
     public StatisticsScene(UserDao ud, User user, Database db, Stage primaryStage, WordDao wd) throws SQLException {
         mainPane = new VBox(10);
         mainPane.setPadding(new Insets(10));
@@ -50,28 +52,27 @@ public class StatisticsScene {
         this.primaryStage = primaryStage;
         worddao = wd;
     }
-    
+
     public Scene start() {
         Button logout = new Button("Logout");
         Button backToMain = new Button("Back to main");
         Label usernameLabel = new Label(user.getUsername());
-        
+
         userPane.getChildren().addAll(usernameLabel, logout, backToMain);
-        
+
         Label failLabel = new Label("Fails = " + user.getFailNumber());
-        Label successesLabel = new Label("Successes = " + (user.getAllAttempts()-user.getFailNumber()));
+        Label successesLabel = new Label("Successes = " + (user.getAllAttempts() - user.getFailNumber()));
         Label allLabel = new Label("All attempts = " + user.getAllAttempts());
-         Label successLabel = new Label("Success = 100 %");
+        Label successLabel = new Label("Success = 100 %");
         if (user.getAllAttempts() != 0) {
-            successLabel.setText("Success = " + ((user.getAllAttempts()-user.getFailNumber())/user.getAllAttempts()) + " %");
+            successLabel.setText("Success = " + ((user.getAllAttempts() - user.getFailNumber()) / user.getAllAttempts()) + " %");
         }
-       
-         
-        logout.setOnAction(e ->{
+
+        logout.setOnAction(e -> {
             ui.loginStart();
         });
         backToMain.setOnAction(e -> {
-            
+
             try {
                 MainScene ms = new MainScene(userdao, database, primaryStage, worddao, user);
                 primaryStage.setScene(ms.start());
@@ -81,6 +82,6 @@ public class StatisticsScene {
         });
         mainPane.getChildren().addAll(userPane, failLabel, successesLabel, allLabel, successLabel);
         return statisticsScene = new Scene(mainPane, 400, 250);
-       
+
     }
 }
