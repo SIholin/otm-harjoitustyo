@@ -11,7 +11,7 @@ public class UserTest {
 
     @Before
     public void setUp() {
-        user = new User(1, "ihqsanna");
+        user = new User(1, "ihqsanna", "ruoka", 0, "", 3);
     }
 
     @Test
@@ -31,14 +31,24 @@ public class UserTest {
 
     @Test
     public void equalswWorks() {
-        User user2 = new User(2, "palleroinen");
-        User user3 = new User(3, "ihqsanna");
+        User user2 = new User(2, "palleroinen", "herkku", 0, "", 3);
+        User user3 = new User(3, "ihqsanna", "ruoka", 0, "", 3);
         
-        assertFalse(user.equals("pieru"));
+        assertFalse(user.equals("kukka"));
         assertTrue(user.equals(user3));
         assertFalse(user.equals(user2));
         assertTrue(user.equals(user));
 
     }
+    @Test
+    public void setFailNumberWorks() {
+        user.setFailNumber(10);
+        assertTrue(user.getFailNumber() == 10);
+    }
 
+    @Test
+    public void setAllAttemptsWorks() {
+        user.setAllAttempts(11);
+        assertTrue(user.getAllAttempts() == 11);
+    }
 }

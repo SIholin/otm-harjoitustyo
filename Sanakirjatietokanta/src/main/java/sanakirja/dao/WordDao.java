@@ -18,11 +18,11 @@ import java.util.List;
  *
  * @author ihqsanna
  */
-public class wordDao implements Dao<Word, Integer> {
+public class WordDao implements Dao<Word, Integer> {
 
     private Database database;
 
-    public wordDao(Database db) {
+    public WordDao(Database db) {
         this.database = db;
     }
 
@@ -69,7 +69,7 @@ public class wordDao implements Dao<Word, Integer> {
     }
 
     @Override
-    public Word save(Word object) throws SQLException {
+    public Word saveOrUpdate(Word object) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Word" + "(form, translation)" + "VALUES (?, ?)");
 

@@ -35,34 +35,32 @@ public class UserDaoTest {
     @Test
     public void saveWorks() throws SQLException {
 
-        User user = new User(null, "lava");
-        assertTrue(userDao.save(user).getUsername().equals(user.getUsername()));
+        User user = new User(null, "lava", "kukka", 10, "", 3);
+        assertTrue(userDao.saveOrUpdate(user).getUsername().equals(user.getUsername()));
     }
 
     @Test
     public void findAllWorks() throws SQLException {
-        userDao.save(new User(null, "lava"));
+        userDao.saveOrUpdate(new User(null, "lava", "kukka", 10, "", 3));
         ArrayList<User> users = userDao.findAll();
         assertTrue(users.size() == 1);
     }
 
     @Test
     public void deleteWorks() throws SQLException {
-        User user = new User(null, "lava");
-        userDao.save(user);
-        userDao.save(new User(2, "kjarkko"));
-        userDao.delete(1);
-        assertNull(userDao.findOne(1));
+        User user = new User(null, "lava", "kakku", 10, "", 3);
+        userDao.saveOrUpdate(user);
+        userDao.saveOrUpdate(new User(2, "kjarkko", "kukka", 5, "", 3));
+        userDao.delete(2);
+        assertNull(userDao.findOne(2));
     }
 
     @Test
     public void findOneWorks() throws SQLException {
-        User user = new User(null, "lava");
-        userDao.save(user);
+        User user = new User(null, "lava", "kakku", 10, "", 3);
+        userDao.saveOrUpdate(user);
 
-        User user1 = userDao.findOne(1);
-        assertNotNull(user1);
-        assertTrue(user1.getUsername().equals(user.getUsername()));
+        assertTrue(userDao.findOne(1).getUsername().equals("lava"));
     }
 
     @After

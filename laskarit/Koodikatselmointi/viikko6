@@ -1,0 +1,16 @@
+# Koodikatselmointi
+
+__Latasin projektin koneelleni 1.5.2018 kello 21:30.__
+
+## Palaute 
+
+- Osa soveluksen metodeista on liian pitkiä. Esimerkiksi FightLogicTest luokassa metodi stanceCounters on turhan pitkä yhden metodin hoidettavaksi. 
+- Jokaisen sovelluksen luokan attribuutit on loistavasti nimetty tajuaa heti mitä se tarkoittaa. Esimerkiksi luokassa Stickman head on pää ja position on sijainti.
+- Myös kaikki sovelluksen metodit kuvaavat hyvin niiden tekemistä. Esimrekiksi FightLogic luokassa metodi palyer1Attack saa pelaajan 1 hyökkäämään. Tämä saa koodista helppolukuista myös ulkopuolisille osapuolille.
+- Luokkien ja pakkausten nimet ovat myös osuvasti nimettyjä, sekä niissä on otettu huomioon oikeat käytännöt eli pakkausten nimet alkavat pienellä ja luokkien nimet isolla.
+- Sovelluksessa luokat ovat fiksusti riippuvaisia toisistaan. Esimerkiksi StickFightApp hoitaa UserInter luokan luomisen ja UserInter hoitaa puolestaan FightStagen luomisen.
+- Koodin kieli on selkeää helposti ymmärrettävää. Sisennykset että välit näyttävät järkeviltä.
+
+## Parannusehdotus
+
+Stickman luokka on hyvin iso, yli 400 riviä koodia. Olisiko tämä mahdollista jakaa useammaksi eriluokaksi? Toistoa on myös melko paljon, joten useammaksi luokaksi jako voisi helpottaa tilannetta. Myös luokan attribuutit voisi hyvin olla private määre, sillä nille on kuitenkin koodissa laitettu getterit.
