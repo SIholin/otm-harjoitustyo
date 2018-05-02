@@ -18,7 +18,9 @@
 | 24.4  | 4    | käytäjälle mahdollisuus luoda omia sanoja sanakirjaan|
 | 25.4  | 3    | käyttäjälle omien tilastojen näkymisen suunnittelu ja aloitus|
 | 26.4  | 1    | eri scenejen eriyttäminen omiksi luokikseen aloitus|
-| yht   | 32   |
+| 2.5   | 3    | arkkitehtuurikuvaus|
+|       | 1    | käyttöohjeen teko|
+| yht   | 36   |
 
 
 
