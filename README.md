@@ -20,6 +20,8 @@ __Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ 
 
 [viikko5](https://github.com/SIholin/otm-harjoitustyo/releases/tag/viikko5)
 
+[viikko6](https://github.com/SIholin/otm-harjoitustyo/releases/tag/vko6)
+
 ## Komentorivitoiminnot
 
 ### Testaus
@@ -48,4 +50,25 @@ Tiedostoon [checkstyle.xml](https://github.com/SIholin/otm-harjoitustyo/blob/mas
 ```
 
 Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto _target/site/checkstyle.html_
+
+### Suoritettavan jarin generointi
+
+Komento
+
+```
+mvn package
+```
+
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _Sanakirja-1.0-SNAPSHOT.jar_
+
+### JavaDoc
+
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
+
+JavaDocia voi tarkastella avaamalla selaimella tiedosto _target/site/apidocs/index.html_
+
 
