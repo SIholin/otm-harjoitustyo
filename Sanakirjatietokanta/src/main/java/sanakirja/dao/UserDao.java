@@ -41,12 +41,16 @@ public class UserDao implements Dao<User, Integer> {
             return null;
         }
 
-        User user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getInt("failNumber"), rs.getString("fails"), rs.getInt("allAttempts"));
+        User user = new User(
+                rs.getInt("id"), rs.getString("username"),
+                rs.getString("password"), rs.getInt("failNumber"), 
+                rs.getString("fails"), rs.getInt("allAttempts")
+        );
 
         stmt.close();
         rs.close();
 
-        //conn.close();
+        conn.close();
         return user;
 
     }
@@ -60,7 +64,11 @@ public class UserDao implements Dao<User, Integer> {
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
-            User user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getInt("failNumber"), rs.getString("fails"), rs.getInt("allAttempts"));
+            User user = new User(
+                    rs.getInt("id"), rs.getString("username"), 
+                    rs.getString("password"), rs.getInt("failNumber"), 
+                    rs.getString("fails"), rs.getInt("allAttempts")
+            );
             users.add(user);
         }
 
@@ -83,55 +91,59 @@ public class UserDao implements Dao<User, Integer> {
 
     }
 
-    private User save(User object) throws SQLException {
+    private User save(User user) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO User" + "(username, password, failNumber, fails, allAttempts)" + "VALUES (?, ?, ?, ?, ?)");
 
-        stmt.setString(1, object.getUsername());
-        stmt.setString(2, object.getPassword());
-        stmt.setInt(3, object.getFailNumber());
-        stmt.setString(4, object.getFails());
-        stmt.setInt(5, object.getAllAttempts());
+        stmt.setString(1, user.getUsername());
+        stmt.setString(2, user.getPassword());
+        stmt.setInt(3, user.getFailNumber());
+        stmt.setString(4, user.getFails());
+        stmt.setInt(5, user.getAllAttempts());
         stmt.executeUpdate();
         stmt.close();
 
         stmt = conn.prepareStatement("SELECT * FROM User WHERE username = ? AND password = ? AND failNumber = ? AND fails = ? AND allAttempts = ?");
-        stmt.setString(1, object.getUsername());
-        stmt.setString(2, object.getPassword());
-        stmt.setInt(3, object.getFailNumber());
-        stmt.setString(4, object.getFails());
-        stmt.setInt(5, object.getAllAttempts());
+        stmt.setString(1, user.getUsername());
+        stmt.setString(2, user.getPassword());
+        stmt.setInt(3, user.getFailNumber());
+        stmt.setString(4, user.getFails());
+        stmt.setInt(5, user.getAllAttempts());
 
         ResultSet rs = stmt.executeQuery();
         rs.next();
 
-        User user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getInt("failNumber"), rs.getString("fails"), rs.getInt("allAttempts"));
+        User newuser = new User(
+                rs.getInt("id"), rs.getString("username"), 
+                rs.getString("password"), rs.getInt("failNumber"), 
+                rs.getString("fails"), rs.getInt("allAttempts")
+        );
 
         stmt.close();
         rs.close();
         conn.close();
-        return user;
+        return newuser;
     }
 
-    private User update(User object) throws SQLException {
+    private User update(User user) throws SQLException {
         Connection conn = database.getConnection();
 
         PreparedStatement stmt = conn.prepareStatement("UPDATE User SET"
                 + " username = ?, password = ?, failNumber = ?, fails = ?, allAttempts = ? WHERE id = ?");
 
-        stmt.setString(1, object.getUsername());
-        stmt.setString(2, object.getPassword());
-        stmt.setInt(3, object.getFailNumber());
-        stmt.setString(4, object.getFails());
-        stmt.setInt(5, object.getAllAttempts());
-        stmt.setInt(6, object.getId());
+        stmt.setString(1, user.getUsername());
+        stmt.setString(2, user.getPassword());
+        stmt.setInt(3, user.getFailNumber());
+        stmt.setString(4, user.getFails());
+        stmt.setInt(5, user.getAllAttempts());
+        stmt.setInt(6, user.getId());
 
         stmt.executeUpdate();
 
         stmt.close();
         conn.close();
 
-        return object;
+        return user;
     }
 
     @Override

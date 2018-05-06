@@ -11,14 +11,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import sun.swing.UIAction;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author ihqsanna
+ * Main luokka hoitaa sovelluksen aloituksen.
  */
 public class Sanakirja extends Application {
 
@@ -30,41 +24,35 @@ public class Sanakirja extends Application {
     private ResultSet resultSet;
 
     /**
-     * @param args the command line arguments
+     * Sovelluksen aloitus metodi.
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         launch(args);
 
     }
-
+    
+    
+    /**
+     * Luo yhteyden tietokantaan. 
+     */
     @Override
     public void init() throws SQLException {
-
-        connection = DriverManager.getConnection("jdbc:sqlite:Sanakirja.db");
-
-        statement = connection.prepareStatement("SELECT 1");
-
-        resultSet = statement.executeQuery();
-
-        if (resultSet.next()) {
-            System.out.println("Connection is ok!");
-        } else {
-            System.out.println("Connection to database failed.");
-        }
         database = new Database("jdbc:sqlite:Sanakirja.db");
-
     }
-
+    
+    /**
+     * Käynnistää sovelluksen.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        database.init();
         ui = new SanakirjaUI(database, primaryStage);
         primaryStage.setTitle("Sanakirja");
         ui.loginStart();
     }
 
+    /**
+     * Sulkee sovelluksen.
+     */
     @Override
     public void stop() {
         System.out.println("Application is closing");

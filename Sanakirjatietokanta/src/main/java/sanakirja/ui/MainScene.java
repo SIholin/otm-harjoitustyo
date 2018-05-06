@@ -47,6 +47,8 @@ public class MainScene {
     private Word word;
     private int fail;
     private int attempts;
+    private LoginTop lg;
+    
 
     /**
      * Ottaa talteen kysisen käyttöliittymän ikkunan tarvitsevat tiedot, kuten
@@ -56,7 +58,6 @@ public class MainScene {
         mainPane = new VBox(10);
         mainPane.setPadding(new Insets(10));
         mainInputPane = new HBox(10);
-        mainUserPane = new HBox(10);
         database = db;
         userdao = ud;
         primaryStage = ps;
@@ -65,6 +66,7 @@ public class MainScene {
         words = worddao.findAll();
         fail = 0;
         this.attempts = 0;
+        lg = new LoginTop(user, Boolean.TRUE, db, ud, ps, wd);
 
     }
 
@@ -85,12 +87,11 @@ public class MainScene {
         }
 
         TextField tryInput = new TextField();
-
+        HBox newScenButtons = new HBox(10);
+        HBox answerButtons = new HBox(10);
         Label createMessage = new Label();
-        Label usernameLabel = new Label("sanna");
-        Button logOutButton = new Button("Logout");
         Button sButton = new Button("Statistics");
-
+        Button practiceButton = new Button("Practice");
         Button answerButton = new Button("Answer");
         Button newQuestionButton = new Button("New word");
         sButton.setOnAction(e -> {
@@ -116,11 +117,12 @@ public class MainScene {
             }
 
         });
+        
         Button newWordButton = new Button("Add new word");
         final String w2 = w;
         answerButton.setOnAction(e -> {
             String trying = tryInput.getText();
-            if (w2.equals(trying)) {
+            if (w2.equalsIgnoreCase(trying)) {
                 attempts++;
                 createMessage.setText("That is right! :)");
                 createMessage.setTextFill(Color.DARKGREEN);
@@ -129,27 +131,21 @@ public class MainScene {
                 } catch (SQLException ex) {
                     Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                answerButton.setDisable(true);
             } else {
                 fail++;
-                attempts ++;
-                System.out.println(fail);
+                attempts++;
                 createMessage.setText("That is wrong :(");
                 createMessage.setTextFill(Color.DARKRED);
                 try {
+                    addWordFail(w2);
                     addFails();
                     addAttempts();
                 } catch (SQLException ex) {
                     Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        });
-
-        logOutButton.setOnAction(e -> {
-            tryInput.setText("");
-            createMessage.setText("");
-
-            primaryStage.setScene(ui.loginStart());
-
+            
         });
 
         newWordButton.setOnAction(e -> {
@@ -163,15 +159,29 @@ public class MainScene {
             } catch (SQLException ex) {
                 Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+            answerButton.setDisable(false);
         });
-        mainUserPane.getChildren().addAll(usernameLabel, logOutButton);
+        practiceButton.setOnAction(e -> {
+            tryInput.setText("");
+            createMessage.setText("");
+            WordListScene wls = new WordListScene(worddao, userdao, user, database, primaryStage);
+            try {
+                primaryStage.setScene(wls.showScene());
+            } catch (SQLException ex) {
+                Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        });
+        answerButtons.getChildren().addAll(answerButton, newQuestionButton);
+        newScenButtons.getChildren().addAll(newWordButton, sButton, practiceButton);
+        mainUserPane = lg.createTop();
         mainInputPane.getChildren().addAll(wordLabel, tryInput);
         mainPane.getChildren().add(mainUserPane);
         if (words.isEmpty()) {
             mainPane.getChildren().add(newWordButton);
         } else {
 
-            mainPane.getChildren().addAll(mainInputPane, createMessage, answerButton, newQuestionButton, newWordButton, sButton);
+            mainPane.getChildren().addAll(mainInputPane, createMessage, answerButtons, newScenButtons);
         }
 
         return mainScene = new Scene(mainPane, 400, 250);
@@ -210,6 +220,16 @@ public class MainScene {
         user.setAllAttempts(a);
         userdao.saveOrUpdate(new User(user.getId(), user.getUsername(), user.getPassword(), user.getFailNumber(), user.getFails(), a));
         attempts = 0;
+    }
+    
+    /**
+     * Lisää käyttäjän epäonnistuneiden sanojen listaan uuden sanan.
+     */
+    public void addWordFail(String word) throws SQLException {   
+        String newList = user.getFails() + ";" + word;
+        user.setFails(newList);
+        userdao.saveOrUpdate(new User(user.getId(), user.getUsername(), user.getPassword(), user.getFailNumber(), newList, user.getAllAttempts()));
+
     }
 
 }

@@ -104,7 +104,9 @@ public class User {
     public String getFails() {
         return fails;
     }
-
+    public void setFails(String word) {
+        this.fails = word;
+    }
     /**
      * Asettaa käyttäjän mokanneiden sanojen arvoksi parametrinä saadun arvon.
      *

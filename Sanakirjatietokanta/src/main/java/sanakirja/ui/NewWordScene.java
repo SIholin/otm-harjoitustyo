@@ -25,7 +25,6 @@ import sanakirja.domain.User;
 import sanakirja.domain.Word;
 
 /**
- *
  * Käyttöliittymän ikkuna, jossa voi luoda uusia sanoja sovellukseen.
  */
 public class NewWordScene {
@@ -42,6 +41,7 @@ public class NewWordScene {
     private Scene newWordScene;
     private SanakirjaUI ui;
     private MainScene mainScene;
+    private LoginTop lt;
 
     /**
      * Ottaa talteen ikkunan ja uuden sanan luomista varten tarvittavat tiedot.
@@ -50,28 +50,27 @@ public class NewWordScene {
         addWordPane = new VBox(10);
         addWordPane.setPadding(new Insets(10));
         userPane = new HBox(10);
-        wordInputPane = new HBox(10);
+        wordInputPane = new HBox(47);
         translationInputPane = new HBox(10);
         user = u;
         database = db;
         userdao = ud;
         worddao = wd;
         primaryStage = ps;
+        lt = new LoginTop(user, Boolean.FALSE, db, ud, ps, wd);
     }
 
     /**
      * Luo käyttöliittymäikkunan elementit ja palauttaa sen.
      */
     public Scene start() throws SQLException {
-        Button logoutButton = new Button("logout");
-        Label usernameLabel = new Label(user.getUsername());
-        Button backToMainButton = new Button("Back to main");
         userPane.setPadding(new Insets(10));
         wordInputPane.setPadding(new Insets(10));
         translationInputPane.setPadding(new Insets(10));
         Label message = new Label();
-
-        userPane.getChildren().addAll(usernameLabel, logoutButton, backToMainButton);
+        
+        
+        userPane = lt.createTop();
 
         Label word = new Label("Word");
         TextField newWord = new TextField();
@@ -85,13 +84,6 @@ public class NewWordScene {
 
         Button createButton = new Button("Add word");
 
-        logoutButton.setOnAction(e -> {
-            newWord.setText("");
-            newTranslation.setText("");
-            message.setText("");
-            ui = new SanakirjaUI(database, primaryStage);
-            primaryStage.setScene(ui.loginStart());
-        });
         ArrayList<Word> words = worddao.findAll();
         createButton.setOnAction(e -> {
             Boolean find = false;
@@ -113,17 +105,7 @@ public class NewWordScene {
                 message.setTextFill(Color.DARKRED);
             }
         });
-        backToMainButton.setOnAction(e -> {
-            newWord.setText("");
-            newTranslation.setText("");
-            message.setText("");
-            try {
-                mainScene = new MainScene(userdao, database, primaryStage, worddao, user);
-                primaryStage.setScene(mainScene.start());
-            } catch (SQLException ex) {
-                Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+
         addWordPane.getChildren().addAll(userPane, wordInputPane, translationInputPane, message, createButton);
 
         return newWordScene = new Scene(addWordPane, 400, 250);

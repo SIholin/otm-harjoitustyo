@@ -57,7 +57,7 @@ public class SanakirjaUI {
 
         VBox loginPane = new VBox(10);
         HBox usernameInputPane = new HBox(10);
-        HBox passwordInputPane = new HBox(10);
+        HBox passwordInputPane = new HBox(15);
 
         loginPane.setPadding(new Insets(10));
         Label usernameLabel = new Label("Username");
@@ -125,7 +125,7 @@ public class SanakirjaUI {
 
         loginPane.getChildren().addAll(usernameInputPane, loginMessage, passwordInputPane, passwordMessage, loginButton, createButton);
 
-        loginScene = new Scene(loginPane, 400, 250);
+        loginScene = new Scene(loginPane, 300, 210);
         primaryStage.setTitle("Sanakirja");
         primaryStage.setScene(loginScene);
         primaryStage.show();

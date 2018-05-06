@@ -75,6 +75,12 @@ public class NewUserScene {
                 users = userdao.findAll();
                 String username = usernameInput.getText();
                 Boolean find = false;
+                if (username.isEmpty()) {
+                     find = true;
+                        createMessage.setText("Username is not available");
+                        createMessage.setTextFill(Color.DARKRED);
+                        message.setText("");
+                }
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).getUsername().equals(username)) {
                         find = true;
@@ -115,7 +121,7 @@ public class NewUserScene {
         });
 
         newUserPane.getChildren().addAll(usernameInputPane, createMessage, passwordInputPane, message, newUserButton, backToLogin);
-        Scene newUserScene = new Scene(newUserPane, 400, 250);
+        Scene newUserScene = new Scene(newUserPane, 325, 210);
         return newUserScene;
     }
 

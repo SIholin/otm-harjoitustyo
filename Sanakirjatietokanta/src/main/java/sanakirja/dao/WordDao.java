@@ -43,7 +43,7 @@ public class WordDao implements Dao<Word, Integer> {
         stmt.close();
         rs.close();
 
-        //conn.close();
+        conn.close();
         return word;
     }
 
@@ -82,7 +82,6 @@ public class WordDao implements Dao<Word, Integer> {
         stmt.setString(1, object.getForm());
         stmt.setString(2, object.getTransaltion());
 
-//        stmt.setString(2, object.getPassword());
         ResultSet rs = stmt.executeQuery();
         rs.next();
 
