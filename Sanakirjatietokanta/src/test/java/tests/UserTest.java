@@ -11,7 +11,7 @@ public class UserTest {
 
     @Before
     public void setUp() {
-        user = new User(1, "ihqsanna", "ruoka", 0, "", 3);
+        user = new User(1, "ihqsanna", "ruoka", 0, "kukkakaali", 3);
     }
 
     @Test
@@ -51,5 +51,13 @@ public class UserTest {
     public void setAllAttemptsWorks() {
         user.setAllAttempts(11);
         assertTrue(user.getAllAttempts() == 11);
+    }
+    /**
+     * Testaa että epäonnistuneihin sanoihin voi lisätä uuden sanan.
+     */
+    @Test
+    public void setFailsWorks() {
+        user.setFails("parsakaali");
+        assertTrue(user.getFails().equals("parsakaali"));
     }
 }

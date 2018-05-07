@@ -62,8 +62,14 @@ public class WordDaoTest {
     @Test
     public void findOneWorks() throws SQLException {
         assertTrue(wordDao.findOne(1).form.equals("kissa"));
+        assertNull(wordDao.findOne(10));
     }
 
+    @Test
+    public void deletDoNothing() throws SQLException {
+        wordDao.delete(1);
+        assertNotNull(wordDao.findOne(1));
+    }
     @After
     public void clean() throws SQLException {
         PreparedStatement stmt = connection.prepareStatement("DELETE FROM Word");

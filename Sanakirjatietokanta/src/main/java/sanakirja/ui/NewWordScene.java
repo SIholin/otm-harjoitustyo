@@ -68,8 +68,7 @@ public class NewWordScene {
         wordInputPane.setPadding(new Insets(10));
         translationInputPane.setPadding(new Insets(10));
         Label message = new Label();
-        
-        
+
         userPane = lt.createTop();
 
         Label word = new Label("Word");
@@ -84,15 +83,24 @@ public class NewWordScene {
 
         Button createButton = new Button("Add word");
 
-        ArrayList<Word> words = worddao.findAll();
+        
         createButton.setOnAction(e -> {
+            ArrayList<Word> words = null;
+            try {
+                words = worddao.findAll();
+            } catch (SQLException ex) {
+                Logger.getLogger(NewWordScene.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Boolean find = false;
+
             for (int i = 0; i < words.size(); i++) {
                 if (words.get(i).getForm().equals(newWord.getText())) {
                     find = true;
                 }
             }
-            if (!find) {
+           
+
+            if (!find && !newTranslation.getText().isEmpty()) {
                 try {
                     message.setText("New word '" + newWord.getText() + "' has been added");
                     message.setTextFill(Color.DARKGREEN);
@@ -100,6 +108,13 @@ public class NewWordScene {
                 } catch (SQLException ex) {
                     Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            } 
+            else if (newWord.getText().isEmpty()) {
+                message.setText("Word is too short!");
+                message.setTextFill(Color.DARKRED);
+            } else if (newTranslation.getText().isEmpty()) {
+                message.setText("Translation is too short!");
+                message.setTextFill(Color.DARKRED);
             } else {
                 message.setText("Word " + newWord.getText() + " already exists");
                 message.setTextFill(Color.DARKRED);
