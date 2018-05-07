@@ -21,6 +21,11 @@ public class User {
     /**
      *
      * Luo käyttäjälle tarvittavat tiedot.
+     * @param id uniikki id.
+     * @param  username käyttäjätunnus;
+     * @param failNumber epäonnistuneiden määrä.
+     * @param fails epäonnistuneet sanat.
+     * @param all yritettyjen sanojen lukumäärä.
      */
     public User(Integer id, String username, String password, Integer failNumber, String fails, Integer all) {
         this.id = id;
@@ -33,7 +38,7 @@ public class User {
 
     /**
      * Paluttaa käyttäjän yrittämien sanojen yhteislukumäärän.
-     *
+     * @return yritettyjen sanojen lukumäärä.
      */
     public Integer getAllAttempts() {
         return allAttempts;
@@ -42,7 +47,7 @@ public class User {
     /**
      * Muokkaa käyttäjän yrittämien sanojen yhteislukumäärää korvaten sen
      * parametrilla saadulla arvolla.
-     *
+     * @param allAttempts uudistettu yrityksien määrä. 
      */
     public void setAllAttempts(Integer allAttempts) {
         this.allAttempts = allAttempts;
@@ -50,7 +55,7 @@ public class User {
 
     /**
      * Palauttaa käyttäjätunnuksen.
-     *
+     * @return käyttäjänimi.
      */
     public String getUsername() {
         return username;
@@ -58,7 +63,7 @@ public class User {
 
     /**
      * Palauttaa salasanan.
-     *
+     * @return käyttäjän salasana.
      */
     public String getPassword() {
         return password;
@@ -66,7 +71,7 @@ public class User {
 
     /**
      * Palauttaa käyttäjän uniikin id:n.
-     *
+     * @retrun käyttäjän id.
      */
     public Integer getId() {
         return this.id;
@@ -75,9 +80,8 @@ public class User {
     /**
      * Tarkistaa onko kahdella käyttäjällä sama käyttäjätunnus ja palattaa sen
      * boolean arvon.
-     *
-     *
-     *
+     * @param obj verrattava objekti.
+     * @return totuusarvo onko käyttäjänimi jo käytössä.
      */
     @Override
     public boolean equals(Object obj) {
@@ -91,7 +95,7 @@ public class User {
 
     /**
      * Palauttaa luvun kuinka monta kertaa käyttäjä on vastannut väärin.
-     *
+     * @return Epäonnistuineiden sanojen lukumäärä.
      */
     public Integer getFailNumber() {
         return failNumber;
@@ -99,17 +103,22 @@ public class User {
 
     /**
      * Palauttaa käyttäjän väärin vastaamat sanat.
-     *
+     * @retrun Epäonnistuneet sanat.
      */
     public String getFails() {
         return fails;
     }
+    
+    /**
+     * Asettaa fails atribuutille arvoksi päivitetyn sanaripsun.
+     * @param word uudistettu sanarimpsu. 
+     */
     public void setFails(String word) {
         this.fails = word;
     }
     /**
-     * Asettaa käyttäjän mokanneiden sanojen arvoksi parametrinä saadun arvon.
-     *
+     * Asettaa käyttäjän mokanneiden sanojen lukuarvoksi parametrinä saadun arvon.
+     * @param val uudistettu lukuarvo.
      */
     public void setFailNumber(int val) {
         this.failNumber = val;

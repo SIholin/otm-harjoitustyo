@@ -19,6 +19,9 @@ public class Word {
 
     /**
      * Luo sanalle tarvittavat tiedot.
+     * @param id uniikki id.
+     * @param form sanan kirjoitusasu.
+     * @param translation käännös.
      */
     public Word(Integer id, String form, String translation) {
         this.id = id;
@@ -28,7 +31,7 @@ public class Word {
 
     /**
      * Palauttaa sanan uniikin id:n.
-     *
+     * @retrun uniikki id.
      */
     public Integer getId() {
         return id;
@@ -36,7 +39,7 @@ public class Word {
 
     /**
      * Palauttaa sanan kirjoitusasun.
-     *
+     * @retrun kirjoitusasu,
      */
     public String getForm() {
         return form;
@@ -44,7 +47,7 @@ public class Word {
 
     /**
      * Palauttaa sanan käännöksen.
-     *
+     * @return käännös.
      */
     public String getTransaltion() {
         return translation;

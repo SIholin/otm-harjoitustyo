@@ -1,25 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sanakirja.dao;
 
-/**
- *
- * @author ihqsanna
- */
 import sanakirja.domain.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
+ * Käyttäjän oma Dao luokka, jonka rajapintana toimii Dao.
  *
- * @author ihqsanna
  */
 public class UserDao implements Dao<User, Integer> {
 
@@ -29,6 +19,13 @@ public class UserDao implements Dao<User, Integer> {
         this.database = database;
     }
 
+    /**
+     * Etsii tietyn käyttäjän sen id:n perusteella käyttäjien joukosta.
+     *
+     * @param key etsittävän käyttäjän id.
+     * @return Etsitty käyttäjä tai jos sitä ei löydy niin null.
+     * @throws SQLException
+     */
     @Override
     public User findOne(Integer key) throws SQLException {
         Connection conn = database.getConnection();
@@ -43,7 +40,7 @@ public class UserDao implements Dao<User, Integer> {
 
         User user = new User(
                 rs.getInt("id"), rs.getString("username"),
-                rs.getString("password"), rs.getInt("failNumber"), 
+                rs.getString("password"), rs.getInt("failNumber"),
                 rs.getString("fails"), rs.getInt("allAttempts")
         );
 
@@ -55,6 +52,12 @@ public class UserDao implements Dao<User, Integer> {
 
     }
 
+    /**
+     * Hakee kaikki käyttäjän samaan ArrayList listaan.
+     *
+     * @return lista kaikista käyttäjistä.
+     * @throws SQLException
+     */
     @Override
     public ArrayList<User> findAll() throws SQLException {
         Connection conn = database.getConnection();
@@ -65,8 +68,8 @@ public class UserDao implements Dao<User, Integer> {
 
         while (rs.next()) {
             User user = new User(
-                    rs.getInt("id"), rs.getString("username"), 
-                    rs.getString("password"), rs.getInt("failNumber"), 
+                    rs.getInt("id"), rs.getString("username"),
+                    rs.getString("password"), rs.getInt("failNumber"),
                     rs.getString("fails"), rs.getInt("allAttempts")
             );
             users.add(user);
@@ -81,6 +84,13 @@ public class UserDao implements Dao<User, Integer> {
 
     }
 
+    /**
+     * Päivittää tai lisää käyttäjän tietokantaan.
+     *
+     * @param object käyttäjä
+     * @return käyttäjä
+     * @throws SQLException
+     */
     @Override
     public User saveOrUpdate(User object) throws SQLException {
         if (object.getId() == null) {
@@ -114,8 +124,8 @@ public class UserDao implements Dao<User, Integer> {
         rs.next();
 
         User newuser = new User(
-                rs.getInt("id"), rs.getString("username"), 
-                rs.getString("password"), rs.getInt("failNumber"), 
+                rs.getInt("id"), rs.getString("username"),
+                rs.getString("password"), rs.getInt("failNumber"),
                 rs.getString("fails"), rs.getInt("allAttempts")
         );
 
@@ -146,6 +156,12 @@ public class UserDao implements Dao<User, Integer> {
         return user;
     }
 
+    /**
+     * Poistaa käyttäjän tietokannasta.
+     *
+     * @param key käyttäjän id.
+     * @throws SQLException
+     */
     @Override
     public void delete(Integer key) throws SQLException {
         Connection conn = database.getConnection();

@@ -1,29 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sanakirja.dao;
 
-/**
- *
- * @author ihqsanna
- */
 import java.sql.*;
 
+/**
+ * Luokka joka huolehtii tietokannan osoitteen löytämisestä.
+ */
 public class Database {
 
     private String databaseAddress;
 
+    /**
+     * Ottaa vastaan tietokannan osoitteen.
+     *
+     * @param databaseAddress tietokannan löytymisosoite.
+     */
     public Database(String databaseAddress) {
         this.databaseAddress = databaseAddress;
 
     }
 
+    /**
+     * Luo DriverManager yhteyden tietokantaan.
+     *
+     * @return yhteys tai null jos yhteys epäonnistuu.
+     * @throws SQLException
+     */
     public Connection getConnection() throws SQLException {
-        try{
+        try {
             return DriverManager.getConnection(databaseAddress);
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
         }

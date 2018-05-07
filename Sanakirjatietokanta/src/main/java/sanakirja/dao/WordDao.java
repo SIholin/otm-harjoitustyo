@@ -1,31 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sanakirja.dao;
 
-import sanakirja.domain.User;
 import sanakirja.domain.Word;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
+ * Sanojen yhdistämisestä tieokantaan huolehtiva Dao luokka, jonka rajapintana
+ * on Dao.
  *
- * @author ihqsanna
  */
 public class WordDao implements Dao<Word, Integer> {
 
     private Database database;
 
+    /**
+     * Ottaa databasen käyttöönsä.
+     *
+     * @param db tietokanta.
+     */
     public WordDao(Database db) {
         this.database = db;
     }
 
+    /**
+     * Etsii sanojen joukosta tietyn id:n omaavan sanan.
+     *
+     * @param key etstittävän sanan id.
+     * @return Etsitty sana tai null jos sitä ei löydy.
+     * @throws SQLException
+     */
     @Override
     public Word findOne(Integer key) throws SQLException {
         Connection conn = database.getConnection();
@@ -47,6 +53,13 @@ public class WordDao implements Dao<Word, Integer> {
         return word;
     }
 
+    /**
+     * Hakee kaikki sanat ja tekee niistä ArrayListan.
+     *
+     * @return Kaikkien sanojen lista.
+     * @throws SQLException
+     */
+
     @Override
     public ArrayList<Word> findAll() throws SQLException {
         Connection conn = database.getConnection();
@@ -67,6 +80,14 @@ public class WordDao implements Dao<Word, Integer> {
 
         return words;
     }
+
+    /**
+     * Lisää sanakirja tietokantaan uuden sanan.
+     *
+     * @param object Lisättävä sana.
+     * @return Lisätty sana.
+     * @throws SQLException
+     */
 
     @Override
     public Word saveOrUpdate(Word object) throws SQLException {
@@ -93,6 +114,13 @@ public class WordDao implements Dao<Word, Integer> {
         return word;
     }
 
+    /**
+     * Metodin tarkoituksena on poistaa sana tietokannasta mutta sen touteutsta
+     * ei vielä tässä vaiheessa ole tarpeen tehdä.
+     *
+     * @param key poistettavan sanan uniikki id.
+     * @throws SQLException
+     */
     @Override
     public void delete(Integer key) throws SQLException {
 
