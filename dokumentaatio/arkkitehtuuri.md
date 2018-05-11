@@ -4,8 +4,7 @@
 
 Ohjelman rakenne on nelitasoinen kerrosarkkitehtuuri, ja koodin pakkausrakenne on seuraava:
  
- KUVA PAKKAUSRAKENTEESTA
-
+<img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/pakkausrakenne.jpg" widht="400">
 
 Yläpakkaus [sanakirja](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta/src/main/java/sanakirja) sisältää sovelluksen aloituksen sekä muut pakkaukset [sanakirja.ui](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta/src/main/java/sanakirja/ui), [sanakirja.domain](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta/src/main/java/sanakirja/domain) ja [sanakirja.dao](https://github.com/Siholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta/src/main/java/sanakirja/dao). Sanakirja.ui sisältää JavaFX:llä toteutetun käyttöliittymän sanakirja.domain sovelluslogiikan ja sanakirja.dao tietojen pysyväistallennuksesta vastaavan koodin.
 
@@ -25,7 +24,7 @@ Ne on toteutettu omina Scene-olioinaan, jotka yksi kerrallaan on käyttäjälle 
 
 Sovelluksen loogisen datamallin muodostavat [User](https://github.com/SIholin/otm-harjoitustyo/blob/master/Sanakirjatietokanta/src/main/java/sanakirja/domain/User.java) ja [Word](https://github.com/SIholin/otm-harjoitustyo/blob/master/Sanakirjatietokanta/src/main/java/sanakirja/domain/Word.java), jotka kuvaavat käyttäjiä ja harjoiteltavia sanoja:
 
-<img src=”https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/Luokkakaavio.jpg”  width=”400”>
+<img src=”https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/Luokkakaavio.jpg”  widht=”400”>
 
 ## Tietojen pysyväistallennus
 
@@ -63,7 +62,7 @@ Painikkeen painamiseen reagoiva tapahtumankäsittelijä kutsuu sovelluslogiikan 
 
 Kun päänäkymässä olevaan syötekenttään on kirjoitettu näkyvissä olevan sanan käännös ja painetaan Answer painiketta etenee sovelluksen kontrolli seuraavasti:
 
-KUVA SEKVENSSIKAAAVIO HARJOITTELU
+<img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/harjoitteluSekvennsi.jpg" widht="400">
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
@@ -73,8 +72,6 @@ Sovelluksessa muuttujien nimiä tulisi parantaa.
 
 Vaikka graafisen käyttöliittymän ikkunat on jaoteltu omiksi luokikseen ovat ne edelleen pitkiä ja erityisesti jokaisen ikkunan palauttava metodi on jokaisessa luokassa melko pitkä. Myös jokaisella ikkunan näyttävällä luokalla on hurja määrä eri attribuutteja. 
 
-### DAO-luokat
+### User-luokka
 
-UserDao että WordDao luokassa on melko paljon tositteista koodia. Esimekriksi alla oleva koodi esiintyy UserDao luokassa monesti sitä voisi tehdä metodin jota kutsutaan tarvittaessa:
-
-KUVA USERDAOSTA
+User-luokalla on melko paljon attribuutteja näille olisi voinut tehdä jonkun yhdistelmätaulun kuten UserWord jossa olisi tietyn käyttäjän epäonnistuneet (ja onnistuneet sanat), ettei niitä käyttäjälle tarvitsisi pitkässä String rimpsussa tallettaa.
