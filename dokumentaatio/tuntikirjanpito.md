@@ -20,6 +20,8 @@
 | 26.4  | 1    | eri scenejen eriyttäminen omiksi luokikseen aloitus|
 | 2.5   | 3    | arkkitehtuurikuvaus|
 |       | 1    | käyttöohjeen teko|
+| 4.5   | 4    | sana listat ikkuna ja tilastoikkunan viimeistely|
+| 11.5  | 2    | dokumentaation parantamista|
 | yht   | 36   |
 
 
