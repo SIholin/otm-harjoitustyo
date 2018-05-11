@@ -33,4 +33,5 @@ Kaikki [määrittelydokumentin](https://github.com/SIholin/otm-harjoitustyo/blob
 
 ## Sovellukseen jääneet laatuongelmat
 
+Sovellus saattaa pimentää ikkunan mustaksi kun esimerkiksi kirjautuu ulos tai luo uuden käyttäjän! Tämä kyllä katoaa kun isontaa ikkunan + merkistä.
 Sovellus ei itsenäisesti luo tietokantaa vaan se pitää olla valmiina ja User sekä Word taulut sisällään.
