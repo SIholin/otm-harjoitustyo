@@ -14,6 +14,8 @@ __Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ 
 
 [Käyttöohje](https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
 
+[Testaus](https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
 [Sovellus](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta)
 
 ## Releaset
