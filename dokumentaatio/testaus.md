@@ -14,11 +14,10 @@ Molempien DAO-luokkien toiminnallisuus on testattu käyttämällä sovelluksessa
 
 ### Testauskattavuus
 
-Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 94% ja haarautumakattavuus 100%
+Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 94% ja haarautumakattavuus 100%. 
+Testaamatta jäi Sanakirja.java mainluokka.
 
 <img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/JacocoReport.png" width="800" height="200">
-
-Testaamatta jäi Sanakirja.java mainluokka.
 
 ## Järjestelmätestaus
 
