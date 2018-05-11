@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto. Ohjelma olettaa, että käynnistyshakemistossa on sqlite tietokanta, joka määrittelee käyttäjät ja sanat. Tietokannan nimi on seuraava:
+Lataa tiedosto [sanakirja.jar](https://github.com/SIholin/otm-harjoitustyo/releases/tag/Loppullinen) ja [Sanakirja.db](https://github.com/SIholin/otm-harjoitustyo/releases/tag/Loppullinen). Ohjelma olettaa, että käynnistyshakemistossa on sqlite tietokanta, joka määrittelee käyttäjät ja sanat. Tietokannan nimi on seuraava:
 
 ``` 
  Sanakirja.db
