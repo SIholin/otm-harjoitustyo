@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa teidosto. Ohjelma olettaa, että käynnistyshakemistossa on sqlite tietokanta, joka määrittelee käyttäjät ja sanat. Tietokannan nimi on seuraava:
+Lataa tiedosto. Ohjelma olettaa, että käynnistyshakemistossa on sqlite tietokanta, joka määrittelee käyttäjät ja sanat. Tietokannan nimi on seuraava:
 
 ``` 
  Sanakirja.db
@@ -69,7 +69,8 @@ Näkymästä löytyy myös yläreunasta sisään kirjautuneen käyttäjän käyt
 
 ## Sanalista
 
-Harjoittelu näkymästä voi siirtyä tietokantaan lisättyjen sanojen listaan _näppäimellä_:
+Harjoittelu näkymästä voi siirtyä tietokantaan lisättyjen sanojen listaan _Practice_:
 
+<img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/Practice.png" widht="400">
 
 Siellä näkyy sanojen kirjoitusasu ja niiden käännös. Näkyästä löytyy myös yläreunasta sisään kirjautuneen käyttäjän käyttäjätunnus ja _Back to main_ sekä _Logout_ näppäimet.
