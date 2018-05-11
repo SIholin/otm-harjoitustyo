@@ -69,7 +69,7 @@ Näkymästä löytyy myös yläreunasta sisään kirjautuneen käyttäjän käyt
 
 ## Sanalista
 
-Harjoittelu näkymästä voi siirtyä tietokantaan lisättyjen sanojen listaan _Practice_:
+Harjoittelu näkymästä voi siirtyä tietokantaan lisättyjen sanojen listaan _Practice_ näppäimellä:
 
 <img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/Practice.png" widht="400">
 
