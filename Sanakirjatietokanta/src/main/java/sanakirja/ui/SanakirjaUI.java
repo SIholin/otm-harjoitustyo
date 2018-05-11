@@ -28,8 +28,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.*;
 
 /**
- *
- * @author ihqsanna
+ * Käyttöliittymän aloitusikkuna.
  */
 public class SanakirjaUI {
 
@@ -45,6 +44,12 @@ public class SanakirjaUI {
     private User user;
     private MainScene mainScene;
 
+    /**
+     * Ottaa talteen käyttöliittymän tarvitsemat tiedot.
+     *
+     * @param database tietokanta
+     * @param primaryStage päänäyttämö
+     */
     public SanakirjaUI(Database database, Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.database = database;
@@ -53,6 +58,11 @@ public class SanakirjaUI {
 
     }
 
+    /**
+     * Luo ensimmäisen ikkunan eli kirjautumisikkunan.
+     *
+     * @return kirjautumisikkuna
+     */
     public Scene loginStart() {
 
         VBox loginPane = new VBox(10);

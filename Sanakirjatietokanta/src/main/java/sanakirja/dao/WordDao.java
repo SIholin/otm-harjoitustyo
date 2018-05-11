@@ -59,7 +59,6 @@ public class WordDao implements Dao<Word, Integer> {
      * @return Kaikkien sanojen lista.
      * @throws SQLException
      */
-
     @Override
     public ArrayList<Word> findAll() throws SQLException {
         Connection conn = database.getConnection();
@@ -88,7 +87,6 @@ public class WordDao implements Dao<Word, Integer> {
      * @return Lisätty sana.
      * @throws SQLException
      */
-
     @Override
     public Word saveOrUpdate(Word object) throws SQLException {
         Connection conn = database.getConnection();

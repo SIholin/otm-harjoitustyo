@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sanakirja.domain;
 
 /**
- *
  * Käyttäjää hallinnoiva luokka
  */
 public class User {
@@ -19,10 +13,10 @@ public class User {
     private Integer allAttempts;
 
     /**
-     *
      * Luo käyttäjälle tarvittavat tiedot.
+     *
      * @param id uniikki id.
-     * @param  username käyttäjätunnus;
+     * @param username käyttäjätunnus;
      * @param failNumber epäonnistuneiden määrä.
      * @param fails epäonnistuneet sanat.
      * @param all yritettyjen sanojen lukumäärä.
@@ -38,6 +32,7 @@ public class User {
 
     /**
      * Paluttaa käyttäjän yrittämien sanojen yhteislukumäärän.
+     *
      * @return yritettyjen sanojen lukumäärä.
      */
     public Integer getAllAttempts() {
@@ -47,7 +42,8 @@ public class User {
     /**
      * Muokkaa käyttäjän yrittämien sanojen yhteislukumäärää korvaten sen
      * parametrilla saadulla arvolla.
-     * @param allAttempts uudistettu yrityksien määrä. 
+     *
+     * @param allAttempts uudistettu yrityksien määrä.
      */
     public void setAllAttempts(Integer allAttempts) {
         this.allAttempts = allAttempts;
@@ -55,6 +51,7 @@ public class User {
 
     /**
      * Palauttaa käyttäjätunnuksen.
+     *
      * @return käyttäjänimi.
      */
     public String getUsername() {
@@ -63,6 +60,7 @@ public class User {
 
     /**
      * Palauttaa salasanan.
+     *
      * @return käyttäjän salasana.
      */
     public String getPassword() {
@@ -71,6 +69,7 @@ public class User {
 
     /**
      * Palauttaa käyttäjän uniikin id:n.
+     *
      * @retrun käyttäjän id.
      */
     public Integer getId() {
@@ -80,6 +79,7 @@ public class User {
     /**
      * Tarkistaa onko kahdella käyttäjällä sama käyttäjätunnus ja palattaa sen
      * boolean arvon.
+     *
      * @param obj verrattava objekti.
      * @return totuusarvo onko käyttäjänimi jo käytössä.
      */
@@ -95,6 +95,7 @@ public class User {
 
     /**
      * Palauttaa luvun kuinka monta kertaa käyttäjä on vastannut väärin.
+     *
      * @return Epäonnistuineiden sanojen lukumäärä.
      */
     public Integer getFailNumber() {
@@ -103,21 +104,26 @@ public class User {
 
     /**
      * Palauttaa käyttäjän väärin vastaamat sanat.
+     *
      * @retrun Epäonnistuneet sanat.
      */
     public String getFails() {
         return fails;
     }
-    
+
     /**
      * Asettaa fails atribuutille arvoksi päivitetyn sanaripsun.
-     * @param word uudistettu sanarimpsu. 
+     *
+     * @param word uudistettu sanarimpsu.
      */
     public void setFails(String word) {
         this.fails = word;
     }
+
     /**
-     * Asettaa käyttäjän mokanneiden sanojen lukuarvoksi parametrinä saadun arvon.
+     * Asettaa käyttäjän mokanneiden sanojen lukuarvoksi parametrinä saadun
+     * arvon.
+     *
      * @param val uudistettu lukuarvo.
      */
     public void setFailNumber(int val) {

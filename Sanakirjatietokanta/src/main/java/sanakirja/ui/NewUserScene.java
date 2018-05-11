@@ -37,6 +37,10 @@ public class NewUserScene {
 
     /**
      * Ottaa talteen uuden käyttäjän luomista varten tarvittavat tiedot.
+     *
+     * @param userdao UserDao
+     * @param database tietokanta
+     * @param primaryStage päänäyttämö
      */
     public NewUserScene(UserDao userdao, Database database, Stage primaryStage) {
         newUserPane = new VBox(10);
@@ -51,6 +55,8 @@ public class NewUserScene {
 
     /**
      * Luo käyttäjälle näkyvän ikkunan ja paluattaa sen.
+     *
+     * @return uuden käyttäjän luomisikkuna
      */
     public Scene start() {
         Label usernameLabel = new Label("Insert username");
@@ -76,18 +82,17 @@ public class NewUserScene {
                 String username = usernameInput.getText();
                 Boolean find = false;
                 if (username.isEmpty()) {
-                     find = true;
-                        createMessage.setText("Username is not available");
-                        createMessage.setTextFill(Color.DARKRED);
-                        message.setText("");
+                    find = true;
+                    createMessage.setText("Username is not available");
+                    createMessage.setTextFill(Color.DARKRED);
+                    message.setText("");
                 }
-                for (int i = 0; i < users.size(); i++) {
-                    if (users.get(i).getUsername().equals(username)) {
+                for (User user : users) {
+                    if (user.getUsername().equalsIgnoreCase(username)) {
                         find = true;
                         createMessage.setText("Username is not available");
                         createMessage.setTextFill(Color.DARKRED);
                         message.setText("");
-//                      
 
                     }
                 }
@@ -97,7 +102,6 @@ public class NewUserScene {
                         message.setText("Password is too short");
                         message.setTextFill(Color.DARKRED);
                         createMessage.setText("");
-//                      
                     } else {
                         userdao.saveOrUpdate(new User(null, username, newPasswordInput.getText(), 0, "", 0));
                         createMessage.setText("New user '" + username + "' created!");

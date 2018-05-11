@@ -21,52 +21,67 @@ import sanakirja.domain.User;
 import sanakirja.domain.Word;
 
 /**
- *
- * @author ihqsanna
+ * Sanalistan näyttävä ikkuna.
  */
 public class WordListScene {
+
     private Scene wordListScene;
     private WordDao wordDao;
     private VBox mainPane;
     private GridPane wordPane;
     private LoginTop lt;
     private HBox userPane;
-    
+
+    /**
+     * Tallettaa tarvittavat parametrit muuttujiin.
+     *
+     * @param wd WordDao
+     * @param ud UserDao
+     * @param user käyttäjä
+     * @param db tietokanta
+     * @param primaryStage päänäyttämö
+     */
     public WordListScene(WordDao wd, UserDao ud, User user, Database db, Stage primaryStage) {
         wordDao = wd;
-        mainPane =  new VBox(10);
+        mainPane = new VBox(10);
         mainPane.setPadding(new Insets(10));
         lt = new LoginTop(user, Boolean.FALSE, db, ud, primaryStage, wd);
         wordPane = new GridPane();
     }
-    
+
+    /**
+     * Luo sanalista näkymän.
+     *
+     * @return sanalista Scene
+     * @throws SQLException
+     */
     public Scene showScene() throws SQLException {
         wordPane.setHgap(10);
         wordPane.setVgap(10);
         ArrayList<Word> words = wordDao.findAll();
-        double sqrt = Math.ceil(words.size()/2) + 1;
+        double sqrt = Math.ceil(words.size() / 2) + 1;
         int ammount = (int) sqrt;
         ArrayList<Label> labels = new ArrayList();
-        for (int i = 0; i < words.size(); i ++) {
+        for (int i = 0; i < words.size(); i++) {
             labels.add(new Label(words.get(i).form + " = " + words.get(i).translation));
         }
         int i = 0;
-        for(int x = 1; x <= 2; x ++) {
+        for (int x = 1; x <= 2; x++) {
             if (i >= labels.size()) {
                 break;
             }
-            for (int y = 1; y <= ammount; y ++) {
+            for (int y = 1; y <= ammount; y++) {
                 if (i >= labels.size()) {
                     break;
                 }
                 wordPane.add(labels.get(i), x, y);
-                i ++;
+                i++;
             }
         }
         userPane = lt.createTop();
         mainPane.getChildren().addAll(userPane, wordPane);
         return wordListScene = new Scene(mainPane, 400, 300);
-        
+
     }
-    
+
 }

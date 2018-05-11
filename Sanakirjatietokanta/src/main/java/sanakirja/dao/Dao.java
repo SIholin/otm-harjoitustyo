@@ -11,11 +11,13 @@ import java.util.*;
  * @param <K> Uniikki id.
  */
 public interface Dao<T, K> {
+
     /**
      * Etsii halutun olion.
+     *
      * @param key
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     T findOne(K key) throws SQLException;
 

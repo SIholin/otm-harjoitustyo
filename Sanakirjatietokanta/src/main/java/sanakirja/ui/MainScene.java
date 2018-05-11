@@ -48,11 +48,15 @@ public class MainScene {
     private int fail;
     private int attempts;
     private LoginTop lg;
-    
 
     /**
      * Ottaa talteen kysisen käyttöliittymän ikkunan tarvitsevat tiedot, kuten
      * sisäänkirjautuneen käyttäjän.
+     *
+     * @param ud UserDao
+     * @param db Database
+     * @param ps päänaäyttämö
+     * @param user käyttäjä
      */
     public MainScene(UserDao ud, Database db, Stage ps, WordDao wd, User user) throws SQLException {
         mainPane = new VBox(10);
@@ -72,6 +76,9 @@ public class MainScene {
 
     /**
      * Luo Käyttöliittymä ikkunan ja palauttaa sen.
+     *
+     * @return harjoittelu ikkuna
+     * @throws SQLException
      */
     public Scene start() throws SQLException {
 
@@ -117,7 +124,7 @@ public class MainScene {
             }
 
         });
-        
+
         Button newWordButton = new Button("Add new word");
         final String w2 = w;
         answerButton.setOnAction(e -> {
@@ -145,7 +152,7 @@ public class MainScene {
                     Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         });
 
         newWordButton.setOnAction(e -> {
@@ -170,7 +177,7 @@ public class MainScene {
             } catch (SQLException ex) {
                 Logger.getLogger(MainScene.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         });
         answerButtons.getChildren().addAll(answerButton, newQuestionButton);
         newScenButtons.getChildren().addAll(newWordButton, sButton, practiceButton);
@@ -190,6 +197,9 @@ public class MainScene {
 
     /**
      * Arpoo satunnaisen sanan kaikkien tallennettujen sanojen joukosta.
+     *
+     * @return rnadom sana
+     * @throws SQLException
      */
     public Word randomWord() throws SQLException {
 
@@ -202,6 +212,7 @@ public class MainScene {
      * Lisää käyttäjän epäonnistuneisiin yritys kertoihin uuden kerran, kun
      * käyttäjä epäonnistuu arvauksessa.
      *
+     * @throws SQLException
      */
     public void addFails() throws SQLException {
         int f = user.getFailNumber() + fail;
@@ -214,6 +225,7 @@ public class MainScene {
      * Lisää käyttäjän kaikkiin arvaus keroihin uuden kerran aina kun käyttäjä
      * yrittää arvausta.
      *
+     * @throws SQLException
      */
     public void addAttempts() throws SQLException {
         int a = user.getAllAttempts() + attempts;
@@ -221,11 +233,13 @@ public class MainScene {
         userdao.saveOrUpdate(new User(user.getId(), user.getUsername(), user.getPassword(), user.getFailNumber(), user.getFails(), a));
         attempts = 0;
     }
-    
+
     /**
      * Lisää käyttäjän epäonnistuneiden sanojen listaan uuden sanan.
+     *
+     * @throws SQLException
      */
-    public void addWordFail(String word) throws SQLException {   
+    public void addWordFail(String word) throws SQLException {
         String newList = user.getFails() + ";" + word;
         user.setFails(newList);
         userdao.saveOrUpdate(new User(user.getId(), user.getUsername(), user.getPassword(), user.getFailNumber(), newList, user.getAllAttempts()));

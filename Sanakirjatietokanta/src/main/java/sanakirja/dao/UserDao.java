@@ -104,21 +104,12 @@ public class UserDao implements Dao<User, Integer> {
     private User save(User user) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO User" + "(username, password, failNumber, fails, allAttempts)" + "VALUES (?, ?, ?, ?, ?)");
-
-        stmt.setString(1, user.getUsername());
-        stmt.setString(2, user.getPassword());
-        stmt.setInt(3, user.getFailNumber());
-        stmt.setString(4, user.getFails());
-        stmt.setInt(5, user.getAllAttempts());
+        prepStmt(stmt, user);
         stmt.executeUpdate();
         stmt.close();
 
         stmt = conn.prepareStatement("SELECT * FROM User WHERE username = ? AND password = ? AND failNumber = ? AND fails = ? AND allAttempts = ?");
-        stmt.setString(1, user.getUsername());
-        stmt.setString(2, user.getPassword());
-        stmt.setInt(3, user.getFailNumber());
-        stmt.setString(4, user.getFails());
-        stmt.setInt(5, user.getAllAttempts());
+        prepStmt(stmt, user);
 
         ResultSet rs = stmt.executeQuery();
         rs.next();
@@ -141,11 +132,7 @@ public class UserDao implements Dao<User, Integer> {
         PreparedStatement stmt = conn.prepareStatement("UPDATE User SET"
                 + " username = ?, password = ?, failNumber = ?, fails = ?, allAttempts = ? WHERE id = ?");
 
-        stmt.setString(1, user.getUsername());
-        stmt.setString(2, user.getPassword());
-        stmt.setInt(3, user.getFailNumber());
-        stmt.setString(4, user.getFails());
-        stmt.setInt(5, user.getAllAttempts());
+        prepStmt(stmt, user);
         stmt.setInt(6, user.getId());
 
         stmt.executeUpdate();
@@ -174,4 +161,11 @@ public class UserDao implements Dao<User, Integer> {
         conn.close();
     }
 
+    private void prepStmt(PreparedStatement stmt, User user) throws SQLException {
+        stmt.setString(1, user.getUsername());
+        stmt.setString(2, user.getPassword());
+        stmt.setInt(3, user.getFailNumber());
+        stmt.setString(4, user.getFails());
+        stmt.setInt(5, user.getAllAttempts());
+    }
 }

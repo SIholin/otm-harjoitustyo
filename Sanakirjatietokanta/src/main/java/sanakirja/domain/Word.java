@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sanakirja.domain;
-
-import java.util.Map;
 
 /**
  *
@@ -19,6 +12,7 @@ public class Word {
 
     /**
      * Luo sanalle tarvittavat tiedot.
+     *
      * @param id uniikki id.
      * @param form sanan kirjoitusasu.
      * @param translation käännös.
@@ -31,6 +25,7 @@ public class Word {
 
     /**
      * Palauttaa sanan uniikin id:n.
+     *
      * @retrun uniikki id.
      */
     public Integer getId() {
@@ -39,6 +34,7 @@ public class Word {
 
     /**
      * Palauttaa sanan kirjoitusasun.
+     *
      * @retrun kirjoitusasu,
      */
     public String getForm() {
@@ -47,6 +43,7 @@ public class Word {
 
     /**
      * Palauttaa sanan käännöksen.
+     *
      * @return käännös.
      */
     public String getTransaltion() {

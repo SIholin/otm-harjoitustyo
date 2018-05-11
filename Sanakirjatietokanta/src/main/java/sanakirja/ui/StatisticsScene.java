@@ -45,11 +45,21 @@ public class StatisticsScene {
     private WordDao worddao;
     private LoginTop lt;
 
+    /**
+     * Alustaa muuttujat.
+     *
+     * @param ud UserDao
+     * @param user käyttäjä
+     * @param db tietokanta
+     * @param primaryStage päänäyttämö
+     * @param wd WordDao
+     * @throws SQLException
+     */
     public StatisticsScene(UserDao ud, User user, Database db, Stage primaryStage, WordDao wd) throws SQLException {
         mainPane = new VBox(10);
         mainPane.setPadding(new Insets(10));
         userPane = new HBox(10);
-        
+
         userdao = ud;
         this.user = user;
         failNumber = user.getFailNumber();
@@ -61,6 +71,12 @@ public class StatisticsScene {
         lt = new LoginTop(user, Boolean.FALSE, db, ud, primaryStage, wd);
     }
 
+    /**
+     * Luo tilasto ikkunan.
+     *
+     * @return tilastoikkuna
+     * @throws SQLException
+     */
     public Scene start() throws SQLException {
 
         userPane = lt.createTop();
@@ -73,49 +89,46 @@ public class StatisticsScene {
         Label allLabel = new Label("All attempts = " + user.getAllAttempts());
         Label successLabel = new Label("Success = 100 %");
         if (user.getAllAttempts() != 0) {
-            double prosent =  100. * (user.getAllAttempts() - user.getFailNumber()) / user.getAllAttempts();
+            double prosent = 100. * (user.getAllAttempts() - user.getFailNumber()) / user.getAllAttempts();
             DecimalFormat df = new DecimalFormat("#.##");
             prosent = Double.valueOf(df.format(prosent));
             successLabel.setText("Success = " + prosent + " %");
         }
-       
-        
 
         mainPane.getChildren().addAll(userPane, failLabel, successesLabel, allLabel, successLabel);
         ArrayList<Word> words = worddao.findAll();
         ArrayList<Label> labels = new ArrayList<>();
         ArrayList<String> test = new ArrayList<>();
-        int j = fails.length -1;
-      
+        int j = fails.length - 1;
+
         while (labels.size() < 9) {
             if (j < 0) {
                 break;
             }
             if (!test.contains(fails[j])) {
                 test.add(fails[j]);
-                 labels.add(new Label(fails[j]));
-                 System.out.println(fails[j]);
+                labels.add(new Label(fails[j]));
             }
 
             j--;
         }
-      
+
         int i = 0;
-        
-        for (int x = 1; x <= 3; x ++) {
-           if (i >= labels.size()) {
-               break;
-           }
-            for(int y = 1; y <=3; y++) {
+
+        for (int x = 1; x <= 3; x++) {
+            if (i >= labels.size()) {
+                break;
+            }
+            for (int y = 1; y <= 3; y++) {
                 if (i >= labels.size()) {
                     break;
                 }
                 failBox.add(labels.get(i), x, y);
-                i ++;
+                i++;
             }
-            
+
         }
-       
+
         mainPane.getChildren().addAll(failedWordLabel, failBox);
         return statisticsScene = new Scene(mainPane, 300, 300);
 

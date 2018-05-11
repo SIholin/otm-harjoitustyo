@@ -30,16 +30,15 @@ public class Sanakirja extends Application {
         launch(args);
 
     }
-    
-    
+
     /**
-     * Luo yhteyden tietokantaan. 
+     * Luo yhteyden tietokantaan.
      */
     @Override
     public void init() throws SQLException {
         database = new Database("jdbc:sqlite:Sanakirja.db");
     }
-    
+
     /**
      * Käynnistää sovelluksen.
      */

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sanakirja.ui;
 
 import java.sql.SQLException;
@@ -45,6 +40,12 @@ public class NewWordScene {
 
     /**
      * Ottaa talteen ikkunan ja uuden sanan luomista varten tarvittavat tiedot.
+     *
+     * @param ud UserDao
+     * @param ps päänäyttämö
+     * @param wd WordDao
+     * @param db tietokanta
+     * @param u käyttäjä
      */
     public NewWordScene(UserDao ud, Stage ps, WordDao wd, Database db, User u) {
         addWordPane = new VBox(10);
@@ -62,6 +63,9 @@ public class NewWordScene {
 
     /**
      * Luo käyttöliittymäikkunan elementit ja palauttaa sen.
+     *
+     * @return uuden sanan luomis ikkuna
+     * @throws SQLException
      */
     public Scene start() throws SQLException {
         userPane.setPadding(new Insets(10));
@@ -83,7 +87,6 @@ public class NewWordScene {
 
         Button createButton = new Button("Add word");
 
-        
         createButton.setOnAction(e -> {
             ArrayList<Word> words = null;
             try {
@@ -98,7 +101,6 @@ public class NewWordScene {
                     find = true;
                 }
             }
-           
 
             if (!find && !newTranslation.getText().isEmpty()) {
                 try {
@@ -108,8 +110,7 @@ public class NewWordScene {
                 } catch (SQLException ex) {
                     Logger.getLogger(SanakirjaUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } 
-            else if (newWord.getText().isEmpty()) {
+            } else if (newWord.getText().isEmpty()) {
                 message.setText("Word is too short!");
                 message.setTextFill(Color.DARKRED);
             } else if (newTranslation.getText().isEmpty()) {
