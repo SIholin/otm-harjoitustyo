@@ -3,19 +3,19 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla reisteröityneet käyttäjät voivat harjoitella kielten oikeinkirjoitusta. Kaikilla rekisteröityneillä käyttäjillä on oma harjoitelusivunsa. Aluksi suomi-engalanti sanakirja (kielen vaihto toiminnalissuus lisätään ajan salliessa) __!__
+Sovelluksen avulla reisteröityneet käyttäjät voivat harjoitella kielten oikeinkirjoitusta. Kaikilla rekisteröityneillä käyttäjillä on oma harjoitelusivunsa. Tarkoitus on harjoitella suomi-englanti sanastoa, mutta käyttäjä voi halutessaan lisätä myös omia kieli yhdistelmiään __!__
 
 ## Käyttäjät
 
-Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli __normaali käyttäjä__. Myöhemmin sovellukseen saatetaan lisätä suuremmilla oikeuksilla varustettu __pääkäyttäjä__.
+Sovelluksella on ainoastaan yksi käyttäjärooli eli __normaali käyttäjä__. 
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu viidestä eri näkymästä
+Sovellus koostuu kuudesta eri näkymästä
 
 <img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/K%C3%A4ytt%C3%B6liittym%C3%A4t.jpg" width="750">
 
-Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän harjoittelutilaan, josta päästään vastauksen oikeellisuudesta riippuen joko väärin tai oikein menneeseen tilaan.
+Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän harjoittelutilaan, jos tietokanta on sanojen osalta tyhjä on käyttäjän vain mahdollista siirtyä uuteen näkymään lisäämään sanoja tähän tarkoitettua nappia painamalla (tai kirjautua ulos). Muulloin näkyvissä on myös sana johon käännöstä odotetaan, sekä vastaus nappi joka kertoo onko vastaus oikein vai väärin, sekä tilastonäkymään vievä nappi ja tietokannassa olevien sanojen sanalistaan vievä nappi. 
 
 ## Perusversion tarjoama toiminnallisuus
 
