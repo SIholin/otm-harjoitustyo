@@ -1,4 +1,4 @@
-# Alustava vaativuusmäärittely
+# Vaativuusmäärittely
 
 
 ## Sovelluksen tarkoitus
@@ -15,7 +15,7 @@ Sovellus koostuu kuudesta eri näkymästä
 
 <img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/K%C3%A4ytt%C3%B6liittym%C3%A4t.jpg" width="750">
 
-Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän harjoittelutilaan, jos tietokanta on sanojen osalta tyhjä on käyttäjän vain mahdollista siirtyä uuteen näkymään lisäämään sanoja tähän tarkoitettua nappia painamalla (tai kirjautua ulos). Muulloin näkyvissä on myös sana johon käännöstä odotetaan, sekä vastaus nappi joka kertoo onko vastaus oikein vai väärin, sekä tilastonäkymään vievä nappi ja tietokannassa olevien sanojen sanalistaan vievä nappi. 
+Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän harjoittelutilaan, jos tietokanta on sanojen osalta tyhjä on käyttäjän vain mahdollista siirtyä uuteen näkymään lisäämään sanoja tähän tarkoitettua nappia painamalla (tai kirjautua ulos). Muulloin näkyvissä on myös sana johon käännöstä odotetaan, sekä vastaus nappi joka kertoo onko vastaus oikein vai väärin ja nappi jolla saa harjoiteltavan sanan vaihdettua uuteeen, sekä tilastonäkymään vievä nappi ja tietokannassa olevien sanojen sanalistaan vievä nappi. 
 
 ## Perusversion tarjoama toiminnallisuus
 
@@ -27,7 +27,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 - käyttäjä voi kirjautua järjestelmään
   - kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus ja siihen liittyvä salasana kirjautumislomakkeelle
-  - jos käyttäjää ei olemassa, ilmoittaa järjestelmä tästä
+  - jos käyttäjää ei olemassa tai salasana väärä, ilmoittaa järjestelmä tästä
 
 ### Kirjautumisen jälkeen
 
@@ -35,6 +35,9 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 - käyttäjä voi vastata kysymyksiin
 - käyttäjä näkee oliko vastaus oikein vai väärin
 - käyttäjä voi kirjautua ulos järjestelmästä
+- käyttäjä näkee omia tilastoja
+- käyttäjä voi lisätä uuden sanan
+- käyttäjä näkee tietokannassa olevat sanat
 
 ## Jatkokehitysideoita
 
@@ -42,9 +45,8 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 
 - käyttäjä voi valita harjoiteltavan kielen
 - sovellus näyttää vastauksen yhteydessä mahdolliset synonyymit
-- käyttäjä näkee tilaston kuinka hyvin osannut
-- käyttäjä näkee mitkä sanat osannut ja mitä ei
-- käyttäjätunnuksen (ja siihen liittyvien todojen) poisto
+- käyttäjä näkee mitkä sanat osannut
+- käyttäjätunnuksen poisto
 - vastaamiseen aikarajoite
 - pääkäyttäjä
   - näkee käyttäjistä yhditettyjä tilastoja
