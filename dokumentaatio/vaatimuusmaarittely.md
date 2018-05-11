@@ -9,11 +9,7 @@ Sovelluksen avulla reisteröityneet käyttäjät voivat harjoitella kielten oike
 
 Sovelluksella on ainoastaan yksi käyttäjärooli eli __normaali käyttäjä__. 
 
-## Käyttöliittymäluonnos
-
-Sovellus koostuu kuudesta eri näkymästä
-
-<img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/K%C3%A4ytt%C3%B6liittym%C3%A4t.jpg" width="750">
+## Käyttöliittymä
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän harjoittelutilaan, jos tietokanta on sanojen osalta tyhjä on käyttäjän vain mahdollista siirtyä uuteen näkymään lisäämään sanoja tähän tarkoitettua nappia painamalla (tai kirjautua ulos). Muulloin näkyvissä on myös sana johon käännöstä odotetaan, sekä vastaus nappi joka kertoo onko vastaus oikein vai väärin ja nappi jolla saa harjoiteltavan sanan vaihdettua uuteeen, sekä tilastonäkymään vievä nappi ja tietokannassa olevien sanojen sanalistaan vievä nappi. 
 
