@@ -24,6 +24,8 @@ __Dokumentaation__ alapuolelta löytyy __sovelluksen dokumentaatio__ _linkkien_ 
 
 [viikko6](https://github.com/SIholin/otm-harjoitustyo/releases/tag/vko6)
 
+[viimeinen release](https://github.com/SIholin/otm-harjoitustyo/releases/tag/Loppullinen)
+
 ## Komentorivitoiminnot
 
 ### Testaus
