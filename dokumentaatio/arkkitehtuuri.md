@@ -4,6 +4,7 @@
 
 Ohjelman rakenne on nelitasoinen kerrosarkkitehtuuri, ja koodin pakkausrakenne on seuraava:
  
+ KUVA PAKKAUSRAKENTEESTA
 
 
 Yläpakkaus [sanakirja](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta/src/main/java/sanakirja) sisältää sovelluksen aloituksen sekä muut pakkaukset [sanakirja.ui](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta/src/main/java/sanakirja/ui), [sanakirja.domain](https://github.com/SIholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta/src/main/java/sanakirja/domain) ja [sanakirja.dao](https://github.com/Siholin/otm-harjoitustyo/tree/master/Sanakirjatietokanta/src/main/java/sanakirja/dao). Sanakirja.ui sisältää JavaFX:llä toteutetun käyttöliittymän sanakirja.domain sovelluslogiikan ja sanakirja.dao tietojen pysyväistallennuksesta vastaavan koodin.
@@ -24,7 +25,7 @@ Ne on toteutettu omina Scene-olioinaan, jotka yksi kerrallaan on käyttäjälle 
 
 Sovelluksen loogisen datamallin muodostavat [User](https://github.com/SIholin/otm-harjoitustyo/blob/master/Sanakirjatietokanta/src/main/java/sanakirja/domain/User.java) ja [Word](https://github.com/SIholin/otm-harjoitustyo/blob/master/Sanakirjatietokanta/src/main/java/sanakirja/domain/Word.java), jotka kuvaavat käyttäjiä ja harjoiteltavia sanoja:
 
-<img src=”https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/Luokkakaavio.jpg”  width=””400”>
+<img src=”https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/Luokkakaavio.jpg”  width=”400”>
 
 ## Tietojen pysyväistallennus
 
@@ -45,3 +46,35 @@ __Word:__
 <pre>
 CREATE TABLE Word (id integer PRIMARY KEY, form varchar(50), translation varcahr(50));
 </pre>
+
+## Päätoiminnallisuudet
+
+Kuvataan seuraavaksi sovelluksen toimintalogiikka muutaman päätoiminnalisuuden osalta sekvenssikaaviona.
+
+### Käyttäjän kirjautuminen
+
+Kun kirjtumisikkunassa olevaan syötetkenttiin on kirjoitettu käyttäjätunnus ja salasana sekä painetaan LoginButton etenee sovelluksen kontrolli seuraavasti:
+
+<img src="https://github.com/SIholin/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/otm_vko5.jpg" widht="400">
+
+Painikkeen painamiseen reagoiva tapahtumankäsittelijä kutsuu sovelluslogiikan SanakirjaUI metodia login antaen parametriksi kirjautuneen käyttäjätunnuksen. Sovelluslogiikka selvittää userDao:n avulla onko käyttäjätunnus olemassa. Jos on ja kirjoitettu salasaana sille kuuluva, eli kirjautuminen onnistuu, on seurauksena se että käyttöliittymä vaihtaa näkymäksi mainScenen, eli sovelluksen varsinaisen päänäkymän.
+
+### Sanojen harjoittelu
+
+Kun päänäkymässä olevaan syötekenttään on kirjoitettu näkyvissä olevan sanan käännös ja painetaan Answer painiketta etenee sovelluksen kontrolli seuraavasti:
+
+KUVA SEKVENSSIKAAAVIO HARJOITTELU
+
+## Ohjelman rakenteeseen jääneet heikkoudet
+
+Sovelluksessa muuttujien nimiä tulisi parantaa.
+
+### Käyttöliittymä
+
+Vaikka graafisen käyttöliittymän ikkunat on jaoteltu omiksi luokikseen ovat ne edelleen pitkiä ja erityisesti jokaisen ikkunan palauttava metodi on jokaisessa luokassa melko pitkä. Myös jokaisella ikkunan näyttävällä luokalla on hurja määrä eri attribuutteja. 
+
+### DAO-luokat
+
+UserDao että WordDao luokassa on melko paljon tositteista koodia. Esimekriksi alla oleva koodi esiintyy UserDao luokassa monesti sitä voisi tehdä metodin jota kutsutaan tarvittaessa:
+
+KUVA USERDAOSTA
